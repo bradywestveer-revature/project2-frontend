@@ -1,0 +1,38 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	background: #222;
+}
+
+p, a {
+	margin: 0;
+	padding: 10px;
+	color: white;
+	font-family: Arial;
+}
+
+a {
+	text-decoration: none;
+}
+
+.flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.smallFont {
+	font-size: 15px;
+}
+
+.mediumFont {
+	font-size: 18px;
+}
+
+.largeFont {
+	font-size: 20px;
+}
