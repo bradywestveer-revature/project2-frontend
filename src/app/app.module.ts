@@ -9,6 +9,9 @@ import { RegisterComponent } from './pages/register/register.component';
 import { MainComponent } from './pages/main/main.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { HeaderComponent } from './components/header/header.component';
+import { PostComponent } from './components/post/post.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
 	declarations: [
@@ -17,7 +20,10 @@ import { HeaderComponent } from './components/header/header.component';
 		RegisterComponent,
 		MainComponent,
 		ProfileComponent,
-		HeaderComponent
+		HeaderComponent,
+  PostComponent,
+  CommentComponent,
+  UserComponent
 	],
 	imports: [
 		BrowserModule,
