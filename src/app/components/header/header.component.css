@@ -1,4 +1,9 @@
 #header {
-	width: 100%;
-	background: #111;
+	width: 100vw;
+	background: rgba(0, 0, 0, .3);
+}
+
+#header > a {
+	padding: 10px;
+	color: rgba(255, 255, 255, 1);
 }

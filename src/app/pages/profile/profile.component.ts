@@ -4,7 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
 	selector: 'app-profile',
 	templateUrl: './profile.component.html',
-	styleUrls: ['./profile.component.css']
+	styleUrls: ['./profile.component.css'],
+	host: {
+		class: "page flex"
+	}
 })
 export class ProfileComponent implements OnInit {
 	constructor (private router : ActivatedRoute) {}
