@@ -25,6 +25,13 @@ a {
 	align-items: center;
 }
 
+.flexColumn {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 .smallFont {
 	font-size: 15px;
 }
