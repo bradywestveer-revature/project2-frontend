@@ -20,6 +20,10 @@
 	justify-content: space-between;
 }
 
-.postComment, .postLike {
+.postControlsComment, .postControlsLike {
 	gap: 5px;
+}
+
+.postControlsComment > a, .postControlsLike > a {
+	user-select: none;
 }

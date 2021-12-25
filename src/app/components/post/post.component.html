@@ -6,16 +6,24 @@
 	<img class = "postImage" src = "https://cdn.britannica.com/42/91642-050-332E5C66/Keukenhof-Gardens-Lisse-Netherlands.jpg" />
 	
 	<div class = "postControls flex">
-		<div class = "postComment flex">
-			<a class = "largeFont">💬</a>
+		<div class = "postControlsComment flex">
+			<a class = "largeFont" (click) = "showComments = !showComments;">💬</a>
 			
 			<p class = "smallFont">3</p>
 		</div>
 		
-		<div class = "postLike flex">
+		<div class = "postControlsLike flex">
 			<a class = "largeFont">🔥</a>
 			
 			<p class = "smallFont">12</p>
 		</div>
+	</div>
+	
+	<div *ngIf = showComments class = "postComments">
+		<app-comment></app-comment>
+		
+		<app-comment></app-comment>
+		
+		<app-comment></app-comment>
 	</div>
 </div>
