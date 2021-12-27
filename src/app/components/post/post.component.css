@@ -13,7 +13,6 @@
 	width: 550px;
 	max-width: 95vw;
 	padding: 15px;
-	justify-content: flex-start;
 	align-items: flex-start;
 	background: rgba(0, 0, 0, .3);
 	gap: 15px;

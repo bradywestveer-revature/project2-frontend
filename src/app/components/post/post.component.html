@@ -5,9 +5,9 @@
 	
 	<div class = "postImages">
 		<div class = "postImagesControls flex">
-			<button class = "postImagesPreviousButton" class = "postImagesControl" (click) = "previousImage ();" [ngClass] = "{ 'postImagesControlDisabled': currentImageIndex === 0 }">⬅️</button>
+			<button class = "postImagesPreviousButton largeFont" class = "postImagesControl" (click) = "previousImage ();" [ngClass] = "{ 'postImagesControlDisabled': currentImageIndex === 0 }">⬅️</button>
 			
-			<button class = "postImagesNextButton" class = "postImagesControl" (click) = "nextImage ();" [ngClass] = "{ 'postImagesControlDisabled': currentImageIndex === imageUrls.length - 1 }">➡️</button>
+			<button class = "postImagesNextButton largeFont" class = "postImagesControl" (click) = "nextImage ();" [ngClass] = "{ 'postImagesControlDisabled': currentImageIndex === imageUrls.length - 1 }">➡️</button>
 		</div>
 		
 		<div class = "postImagesContainer flex">

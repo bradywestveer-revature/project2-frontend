@@ -22,11 +22,11 @@ export class PostComponent implements OnInit {
 	
 	showComments : boolean = false;
 	
-	previousImage () {
+	previousImage () : void {
 		this.currentImageIndex = Math.max (0, this.currentImageIndex - 1);
 	}
 	
-	nextImage () {
+	nextImage () : void {
 		this.currentImageIndex = Math.min (this.imageUrls.length - 1, this.currentImageIndex + 1);
 	}
 	

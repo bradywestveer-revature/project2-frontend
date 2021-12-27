@@ -1,4 +1,24 @@
 <div id = "posts" class = "flexColumn">
+	<div id = "createPostContainer" class = "flexColumn">
+		<app-user></app-user>
+		
+		<textarea id = "createPostInput" class = "mediumFont" placeholder = "Write a post..."></textarea>
+		
+		<div id = "createPostPreviewImages" class = "flex" *ngIf = "previewImageUrls.length > 0">
+			<img *ngFor = "let url of previewImageUrls" class = "previewImage" [src] = "url" />
+		</div>
+		
+		<div id = "createPostSubmitContainer" class = "flex">
+			<label id = "addPostImagesLabel" class = "smallFont">
+				Add Images
+				
+				<input type = "file" multiple id = "addPostImagesInput" class = "smallFont" (input) = "uploadImage ($event);" />
+			</label>
+			
+			<button id = "submitPostButton" class = "smallFont">Post</button>
+		</div>
+	</div>
+	
 	<app-post></app-post>
 
 	<app-post></app-post>

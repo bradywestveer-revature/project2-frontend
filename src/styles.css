@@ -20,7 +20,7 @@ body {
 	50% { background: #804600; }
 }
 
-p, a {
+p, a, label {
 	margin: 0;
 	padding: 0;
 	color: white;
@@ -32,7 +32,7 @@ a {
 	cursor: pointer;
 }
 
-button, input {
+button, input, textarea {
 	outline: 0;
 	border: 0;
 	color: white;
