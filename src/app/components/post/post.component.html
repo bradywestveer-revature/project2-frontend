@@ -23,7 +23,11 @@
 		</div>
 		
 		<div class = "postControl flex">
-			<a class = "flex" (click) = "liked = !liked;"><img src = "{{ liked ? 'assets/fire.png' : 'assets/fire_gray.png' }}" /></a>
+			<a class = "flex" (click) = "liked = !liked;">
+				<img *ngIf = "liked" src = "assets/fire.png" />
+				
+				<img *ngIf = "!liked" src = "assets/fire_gray.png" />
+			</a>
 			
 			<p class = "smallFont">{{ likeCount }}</p>
 		</div>
