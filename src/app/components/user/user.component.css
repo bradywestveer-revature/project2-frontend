@@ -1,0 +1,25 @@
+.userContainer{
+    justify-content: space-between;
+    height: 10vmin;
+    gap: 10px;
+    
+}
+
+.userContainer > img{
+    object-fit: contain;
+    height: 60%;
+    border-radius: 50%;
+}
+
+.userContainer :hover{
+    cursor: pointer;
+}
+
+.userText{
+    gap: 3px;
+    align-items: flex-start;
+}
+
+.userText > p {
+    padding: 0;
+}
