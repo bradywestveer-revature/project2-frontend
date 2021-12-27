@@ -1,29 +1,45 @@
 <div class = "post flexColumn">
 	<app-user></app-user>
 	
-	<p class = "postBody mediumFont">Just got some new plants for my garden!</p>
+	<p class = "postBody mediumFont">{{ body }}</p>
 	
-	<img class = "postImage" src = "https://cdn.britannica.com/42/91642-050-332E5C66/Keukenhof-Gardens-Lisse-Netherlands.jpg" />
+	<div class = "postImages">
+		<div class = "postImagesControls flex">
+			<button class = "postImagesPreviousButton" class = "postImagesControl" (click) = "previousImage ();" [ngClass] = "{ 'postImagesControlDisabled': currentImageIndex === 0 }">⬅️</button>
+			
+			<button class = "postImagesNextButton" class = "postImagesControl" (click) = "nextImage ();" [ngClass] = "{ 'postImagesControlDisabled': currentImageIndex === imageUrls.length - 1 }">➡️</button>
+		</div>
+		
+		<div class = "postImagesContainer flex">
+			<img *ngFor = "let url of imageUrls; index as i" class = "postImage" src = "{{ url }}" [ngClass] = "{ 'postImageDisabled': i !== currentImageIndex }" />
+		</div>
+	</div>
 	
 	<div class = "postControls flex">
 		<div class = "postControlsComment flex">
 			<a class = "largeFont" (click) = "showComments = !showComments;">💬</a>
 			
-			<p class = "smallFont">3</p>
+			<p class = "smallFont">{{ commentCount }}</p>
 		</div>
 		
 		<div class = "postControlsLike flex">
 			<a class = "largeFont">🔥</a>
 			
-			<p class = "smallFont">12</p>
+			<p class = "smallFont">{{ likeCount }}</p>
 		</div>
 	</div>
 	
-	<div *ngIf = showComments class = "postComments">
+	<div *ngIf = showComments class = "postComments flexColumn">
 		<app-comment></app-comment>
 		
 		<app-comment></app-comment>
 		
 		<app-comment></app-comment>
+		
+		<div class = "postCommentsInputContainer flex">
+			<input class = "postCommentsInput smallFont" placeholder = "Write a comment..." />
+			
+			<button class = "postCommentsSubmitButton smallFont">Post</button>
+		</div>
 	</div>
 </div>

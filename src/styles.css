@@ -32,6 +32,12 @@ a {
 	cursor: pointer;
 }
 
+button, input {
+	outline: 0;
+	border: 0;
+	color: white;
+}
+
 .flex {
 	display: flex;
 	justify-content: center;

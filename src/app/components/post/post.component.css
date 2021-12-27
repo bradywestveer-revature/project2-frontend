@@ -1,6 +1,17 @@
+@media (hover: hover) {
+	.postImagesControls {
+		opacity: 0;
+		transition: .25s opacity;
+	}
+
+	.postImagesControls:hover {
+		opacity: unset;
+	}
+}
+
 .post {
-	width: 100%;
-	max-width: 550px;
+	width: 550px;
+	max-width: 95vw;
 	padding: 15px;
 	justify-content: flex-start;
 	align-items: flex-start;
@@ -10,9 +21,52 @@
 	box-sizing: border-box;
 }
 
+.postImages {
+	width: 100%;
+	position: relative;
+}
+
+.postImagesControls {
+	width: 100%;
+	height: 100%;
+	height: 300px;
+	position: absolute;
+	justify-content: space-between;
+	padding: 15px;
+	box-sizing: border-box;
+}
+
+.postImagesControls:active {
+	pointer-events: none;
+}
+
+.postImagesControl {
+	width: 35px;
+	height: 35px;
+	background: rgba(0, 0, 0, .5);
+	border-radius: 50%;
+	transition: .25s opacity;
+	pointer-events: auto;
+}
+
+.postImagesControlDisabled {
+	visibility: hidden;
+}
+
+.postImagesContainer {
+	background: rgba(0, 0, 0, .3);
+	height: 300px;
+	overflow-x: hidden;
+}
+
 .postImage {
 	width: 100%;
-	object-fit: cover;
+	height: 100%;
+	object-fit: contain;
+}
+
+.postImageDisabled {
+	display: none;
 }
 
 .postControls {
@@ -26,4 +80,26 @@
 
 .postControlsComment > a, .postControlsLike > a {
 	user-select: none;
+}
+
+.postComments {
+	width: 100%;
+	align-items: flex-start;
+	gap: 15px;
+}
+
+.postCommentsInputContainer {
+	width: 100%;
+	gap: 5px;
+}
+
+.postCommentsInput {
+	background: rgba(0, 0, 0, .3);
+	padding: 10px;
+	flex-grow: 1;
+}
+
+.postCommentsSubmitButton {
+	background: rgba(0, 0, 0, .3);
+	padding: 10px;
 }
