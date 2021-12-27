@@ -42,7 +42,7 @@
 .postImagesControl {
 	width: 35px;
 	height: 35px;
-	background: rgba(0, 0, 0, .5);
+	background: rgba(0, 0, 0, .6);
 	border-radius: 50%;
 	transition: .25s opacity;
 	pointer-events: auto;
@@ -73,12 +73,12 @@
 	justify-content: space-between;
 }
 
-.postControlsComment, .postControlsLike {
-	gap: 5px;
+.postControl {
+	gap: 7px;
 }
 
-.postControlsComment > a, .postControlsLike > a {
-	user-select: none;
+.postControl > a > img {
+	height: 25px;
 }
 
 .postComments {

@@ -18,6 +18,8 @@ export class PostComponent implements OnInit {
 	currentImageIndex : number = 0;
 	
 	commentCount : number = 3;
+	
+	liked : boolean = false;
 	likeCount : number = 12;
 	
 	showComments : boolean = false;

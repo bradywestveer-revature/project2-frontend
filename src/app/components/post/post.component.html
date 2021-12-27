@@ -5,9 +5,9 @@
 	
 	<div class = "postImages">
 		<div class = "postImagesControls flex">
-			<button class = "postImagesPreviousButton largeFont" class = "postImagesControl" (click) = "previousImage ();" [ngClass] = "{ 'postImagesControlDisabled': currentImageIndex === 0 }">⬅️</button>
+			<button class = "postImagesPreviousButton largeFont" class = "postImagesControl" (click) = "previousImage ();" [ngClass] = "{ 'postImagesControlDisabled': currentImageIndex === 0 }">◀</button>
 			
-			<button class = "postImagesNextButton largeFont" class = "postImagesControl" (click) = "nextImage ();" [ngClass] = "{ 'postImagesControlDisabled': currentImageIndex === imageUrls.length - 1 }">➡️</button>
+			<button class = "postImagesNextButton largeFont" class = "postImagesControl" (click) = "nextImage ();" [ngClass] = "{ 'postImagesControlDisabled': currentImageIndex === imageUrls.length - 1 }">▶</button>
 		</div>
 		
 		<div class = "postImagesContainer flex">
@@ -16,14 +16,18 @@
 	</div>
 	
 	<div class = "postControls flex">
-		<div class = "postControlsComment flex">
-			<a class = "largeFont" (click) = "showComments = !showComments;">💬</a>
+		<div class = "postControl flex">
+			<a class = "flex" (click) = "showComments = !showComments;"><img src = "assets/comment.png" /></a>
 			
 			<p class = "smallFont">{{ commentCount }}</p>
 		</div>
 		
-		<div class = "postControlsLike flex">
-			<a class = "largeFont">🔥</a>
+		<div class = "postControl flex">
+			<a class = "flex" (click) = "liked = !liked;">
+				<img *ngIf = "liked" src = "assets/fire.png" />
+				
+				<img *ngIf = "!liked" src = "assets/fire_gray.png" />
+			</a>
 			
 			<p class = "smallFont">{{ likeCount }}</p>
 		</div>
