@@ -57,6 +57,10 @@ button, input, textarea {
 	overflow-y: scroll;
 }
 
+.extraSmallFont{
+	font-size: 13px;
+}
+
 .smallFont {
 	font-size: 15px;
 }

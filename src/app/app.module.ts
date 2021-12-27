@@ -21,9 +21,9 @@ import { UserComponent } from './components/user/user.component';
 		MainComponent,
 		ProfileComponent,
 		HeaderComponent,
-  PostComponent,
-  CommentComponent,
-  UserComponent
+		PostComponent,
+		CommentComponent,
+		UserComponent
 	],
 	imports: [
 		BrowserModule,
