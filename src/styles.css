@@ -57,6 +57,16 @@ button, input, textarea {
 	overflow-y: scroll;
 }
 
+.postsContainer {
+	padding: 10px;
+	width: 100%;
+	height: 100%;
+	justify-content: flex-start;
+	gap: 10px;
+	box-sizing: border-box;
+	overflow-y: scroll;
+}
+
 .smallFont {
 	font-size: 15px;
 }
