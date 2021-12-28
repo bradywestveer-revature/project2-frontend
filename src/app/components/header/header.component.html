@@ -3,8 +3,8 @@
 	
 	<a class = "largeFont flex" routerLink = "/">Project 2 🔥</a>
 	
-	<div id = "headerUser" class = "flex">
-		<app-user></app-user>
+	<div [ngClass] = "{ 'hidden': dataService.user.username === undefined }" id = "headerUser" class = "flex">
+		<app-user [user] = "dataService.user"></app-user>
 		
 		<a class = "smallFont">Logout</a>
 	</div>

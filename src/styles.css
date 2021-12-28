@@ -44,6 +44,14 @@ button {
 	cursor: pointer;
 }
 
+.hidden {
+	visibility: hidden !important;
+}
+
+.displayNone {
+	display: none !important;
+}
+
 .flex {
 	display: flex;
 	justify-content: center;
