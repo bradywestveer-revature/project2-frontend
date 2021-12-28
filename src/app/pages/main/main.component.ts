@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { HttpService } from 'src/app/services/http.service';
 
 @Component({
 	selector: 'app-main',
@@ -11,7 +9,7 @@ import { HttpService } from 'src/app/services/http.service';
 	}
 })
 export class MainComponent implements OnInit {
-	constructor (private httpService : HttpService) {}
+	constructor () {}
 	
 	ngOnInit () : void {}
 }
