@@ -17,6 +17,10 @@ export class CreatePostComponent implements OnInit {
 		}
 	}
 	
+	removePreviewImage (index : number) : void {
+		this.previewImageUrls.splice (index, 1);
+	}
+	
 	ngOnInit (): void {
 		
 	}

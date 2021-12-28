@@ -1,6 +1,6 @@
 #header {
 	width: 100vw;
-	padding: 0 15px;
+	padding: 10px;
 	background: rgba(0, 0, 0, .3);
 	box-sizing: border-box;
 }
@@ -9,10 +9,6 @@
 	flex-basis: 0;
 	flex-grow: 1;
 	height: 100%;
-}
-
-#header > a {
-	padding: 10px;
 }
 
 #headerUser {

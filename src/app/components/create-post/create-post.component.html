@@ -1,19 +1,23 @@
-<div id = "createPostContainer" class = "flexColumn">
+<div class = "createPostContainer flexColumn">
 	<app-user></app-user>
 	
-	<textarea id = "createPostInput" class = "mediumFont" placeholder = "Write a post..."></textarea>
+	<textarea class = "createPostInput mediumFont" placeholder = "Write a post..."></textarea>
 	
-	<div id = "createPostPreviewImages" class = "flex" *ngIf = "previewImageUrls.length > 0">
-		<img *ngFor = "let url of previewImageUrls" class = "previewImage" [src] = "url" />
+	<div class = "createPostPreviewImages flex" *ngIf = "previewImageUrls.length > 0">
+		<div *ngFor = "let url of previewImageUrls; index as i" class = "previewImageContainer">
+			<img class = "previewImage" [src] = "url" />
+			
+			<button (click) = "removePreviewImage (i)" class = "removePreviewImageButton extraSmallFont">✕</button>
+		</div>
 	</div>
 	
-	<div id = "createPostSubmitContainer" class = "flex">
-		<label id = "addPostImagesLabel" class = "smallFont">
+	<div class = "createPostSubmitContainer flex">
+		<label class = "addPostImagesLabel smallFont">
 			Add Images
 			
-			<input type = "file" multiple id = "addPostImagesInput" class = "smallFont" (input) = "uploadImage ($event);" />
+			<input type = "file" multiple class = "addPostImagesInput smallFont" (input) = "uploadImage ($event);" />
 		</label>
 		
-		<button id = "submitPostButton" class = "smallFont">Post</button>
+		<button class = "smallFont">Post</button>
 	</div>
 </div>

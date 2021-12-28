@@ -1,25 +1,28 @@
-.userContainer{
-    justify-content: space-between;
-    height: 10vmin;
-    gap: 10px;
-    
+.userContainer {
+	justify-content: space-between;
+	gap: 7px;
+	outline: none;
 }
 
-.userContainer > img{
-    object-fit: contain;
-    height: 60%;
-    border-radius: 50%;
+.userContainer > img {
+	object-fit: contain;
+	height: 40px;
+	border-radius: 50%;
 }
 
-.userContainer :hover{
-    cursor: pointer;
+.userContainer:hover {
+	cursor: pointer;
 }
 
-.userText{
-    gap: 3px;
-    align-items: flex-start;
+.userText {
+	gap: 3px;
+	align-items: flex-start;
 }
 
 .userText > p {
-    padding: 0;
+	padding: 0;
+}
+
+.usernameText {
+	color: #BBB;
 }

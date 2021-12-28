@@ -38,6 +38,12 @@ button, input, textarea {
 	color: white;
 }
 
+button {
+	background: rgba(0, 0, 0, .3);
+	padding: 10px;
+	cursor: pointer;
+}
+
 .flex {
 	display: flex;
 	justify-content: center;

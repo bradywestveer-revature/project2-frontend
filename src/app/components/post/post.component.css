@@ -46,10 +46,15 @@
 	border-radius: 50%;
 	transition: .25s opacity;
 	pointer-events: auto;
+	cursor: pointer;
 }
 
-.postImagesControlDisabled {
+.hidden {
 	visibility: hidden;
+}
+
+.displayNone {
+	display: none;
 }
 
 .postImagesContainer {
@@ -64,10 +69,6 @@
 	object-fit: contain;
 }
 
-.postImageDisabled {
-	display: none;
-}
-
 .postControls {
 	width: 100%;
 	justify-content: space-between;
@@ -78,13 +79,13 @@
 }
 
 .postControl > a > img {
-	height: 25px;
+	height: 23px;
 }
 
 .postComments {
 	width: 100%;
 	align-items: flex-start;
-	gap: 15px;
+	gap: 20px;
 }
 
 .postCommentsInputContainer {
@@ -96,9 +97,4 @@
 	background: rgba(0, 0, 0, .3);
 	padding: 10px;
 	flex-grow: 1;
-}
-
-.postCommentsSubmitButton {
-	background: rgba(0, 0, 0, .3);
-	padding: 10px;
 }

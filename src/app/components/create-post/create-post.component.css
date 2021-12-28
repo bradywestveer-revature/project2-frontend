@@ -1,4 +1,4 @@
-#createPostContainer {
+.createPostContainer {
 	width: 550px;
 	max-width: 95vw;
 	padding: 15px;
@@ -9,7 +9,7 @@
 	box-sizing: border-box;
 }
 
-#createPostInput {
+.createPostInput {
 	width: 100%;
 	height: 100px;
 	background: rgba(0, 0, 0, .3);
@@ -19,32 +19,49 @@
 	resize: none;
 }
 
-#createPostPreviewImages {
+.createPostPreviewImages {
 	justify-content: flex-start;
 	flex-wrap: wrap;
 	gap: 5px;
 }
 
-#createPostSubmitContainer {
+.createPostSubmitContainer {
 	width: 100%;
 	justify-content: space-between;
 	gap: 5px;
 }
 
-#addPostImagesLabel {
+.addPostImagesLabel {
 	background: rgba(0, 0, 0, .3);
 	padding: 10px;
+	cursor: pointer;
 }
 
-#addPostImagesInput {
+.addPostImagesInput {
 	display: none;
 }
 
-#submitPostButton {
-	background: rgba(0, 0, 0, .3);
-	padding: 10px;
+.previewImageContainer {
+	position: relative;
 }
 
 .previewImage {
 	height: 75px;
+}
+
+.removePreviewImageButton {
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, .6);
+	padding: 0;
+	transition: .25s opacity;
+	opacity: 0;
+}
+
+.previewImageContainer:hover > .removePreviewImageButton {
+	opacity: 1;
 }

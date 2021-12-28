@@ -5,13 +5,13 @@
 	
 	<div class = "postImages">
 		<div class = "postImagesControls flex">
-			<button class = "postImagesPreviousButton largeFont" class = "postImagesControl" (click) = "previousImage ();" [ngClass] = "{ 'postImagesControlDisabled': currentImageIndex === 0 }">◀</button>
+			<button class = "postImagesPreviousButton largeFont" class = "postImagesControl" (click) = "previousImage ();" [ngClass] = "{ 'hidden': currentImageIndex === 0 }">◀</button>
 			
-			<button class = "postImagesNextButton largeFont" class = "postImagesControl" (click) = "nextImage ();" [ngClass] = "{ 'postImagesControlDisabled': currentImageIndex === imageUrls.length - 1 }">▶</button>
+			<button class = "postImagesNextButton largeFont" class = "postImagesControl" (click) = "nextImage ();" [ngClass] = "{ 'hidden': currentImageIndex === imageUrls.length - 1 }">▶</button>
 		</div>
 		
 		<div class = "postImagesContainer flex">
-			<img *ngFor = "let url of imageUrls; index as i" class = "postImage" src = "{{ url }}" [ngClass] = "{ 'postImageDisabled': i !== currentImageIndex }" />
+			<img *ngFor = "let url of imageUrls; index as i" [ngClass] = "{ 'displayNone': i !== currentImageIndex }" src = "{{ url }}" class = "postImage" />
 		</div>
 	</div>
 	
@@ -33,7 +33,7 @@
 		</div>
 	</div>
 	
-	<div *ngIf = showComments class = "postComments flexColumn">
+	<div [ngClass] = "{ 'displayNone': !showComments }" class = "postComments flexColumn">
 		<app-comment></app-comment>
 		
 		<app-comment></app-comment>
@@ -43,7 +43,7 @@
 		<div class = "postCommentsInputContainer flex">
 			<input class = "postCommentsInput smallFont" placeholder = "Write a comment..." />
 			
-			<button class = "postCommentsSubmitButton smallFont">Post</button>
+			<button class = "smallFont">Post</button>
 		</div>
 	</div>
 </div>

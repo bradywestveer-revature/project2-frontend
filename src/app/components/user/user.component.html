@@ -1,7 +1,9 @@
-<div class="userContainer flex" routerLink="/@{{username}}">
-    <img src={{img}} alt="">
-    <div class="flexColumn userText">
-        <p>{{firstName}} {{lastName}}</p>
-        <p class="extraSmallFont">@{{username}}</p>
-    </div>
+<div class = "userContainer flex" routerLink = "/@{{username}}">
+	<img src = "{{ profileImageUrl }}" alt = "">
+	
+	<div class = "flexColumn userText">
+		<p class = "smallFont">{{firstName}} {{lastName}}</p>
+		
+		<p class = "usernameText extraSmallFont">@{{username}}</p>
+	</div>
 </div>
