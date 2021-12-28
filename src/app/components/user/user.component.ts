@@ -6,7 +6,10 @@ import { Component, Input, OnInit } from '@angular/core';
 	styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+	@Input ()
 	firstName : string = "David";
+	
+	@Input ()
 	lastName : string = "Helfer"
 	
 	@Input ()
