@@ -1,17 +1,17 @@
 <div class = "post flexColumn">
-	<app-user></app-user>
+	<app-user [user] = "user"></app-user>
 	
-	<p class = "postBody mediumFont">{{ body }}</p>
+	<p class = "postBody mediumFont">{{ post.body }}</p>
 	
 	<div class = "postImages">
 		<div class = "postImagesControls flex">
 			<button class = "postImagesPreviousButton largeFont" class = "postImagesControl" (click) = "previousImage ();" [ngClass] = "{ 'hidden': currentImageIndex === 0 }">◀</button>
 			
-			<button class = "postImagesNextButton largeFont" class = "postImagesControl" (click) = "nextImage ();" [ngClass] = "{ 'hidden': currentImageIndex === imageUrls.length - 1 }">▶</button>
+			<button class = "postImagesNextButton largeFont" class = "postImagesControl" (click) = "nextImage ();" [ngClass] = "{ 'hidden': currentImageIndex === post.imageUrls.length - 1 }">▶</button>
 		</div>
 		
 		<div class = "postImagesContainer flex">
-			<img *ngFor = "let url of imageUrls; index as i" [ngClass] = "{ 'displayNone': i !== currentImageIndex }" src = "{{ url }}" class = "postImage" />
+			<img *ngFor = "let url of post.imageUrls; index as i" [ngClass] = "{ 'displayNone': i !== currentImageIndex }" src = "{{ url }}" class = "postImage" />
 		</div>
 	</div>
 	
@@ -19,7 +19,7 @@
 		<div class = "postControl flex">
 			<a class = "flex" (click) = "showComments = !showComments;"><img src = "assets/comment.png" /></a>
 			
-			<p class = "smallFont">{{ commentCount }}</p>
+			<p class = "smallFont">{{ post.comments.length }}</p>
 		</div>
 		
 		<div class = "postControl flex">
@@ -29,21 +29,17 @@
 				<img *ngIf = "!liked" src = "assets/fire_gray.png" />
 			</a>
 			
-			<p class = "smallFont">{{ likeCount }}</p>
+			<p class = "smallFont">{{ post.likes.length }}</p>
 		</div>
 	</div>
 	
 	<div [ngClass] = "{ 'displayNone': !showComments }" class = "postComments flexColumn">
-		<app-comment [body] = "'Nice flowers!'"></app-comment>
-		
-		<app-comment [body] = "'Wow! Looks great'"></app-comment>
-		
-		<app-comment [body] = "'098409823704958723490587234905872309829074183413712980123828327691798'"></app-comment>
+		<app-comment *ngFor = "let comment of post.comments" [user] = "dataService.users [comment.creatorId]" [body] = "comment.body"></app-comment>
 		
 		<div class = "postCommentsInputContainer flex">
-			<input class = "postCommentsInput smallFont" placeholder = "Write a comment..." />
+			<input class = "postCommentsInput smallFont" placeholder = "Write a comment..." [(ngModel)] = "postCommentInput" />
 			
-			<button class = "smallFont">Post</button>
+			<button class = "smallFont" (click) = "postComment ();">Post</button>
 		</div>
 	</div>
 </div>

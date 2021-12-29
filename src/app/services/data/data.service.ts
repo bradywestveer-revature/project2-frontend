@@ -12,5 +12,17 @@ export class DataService {
 		profileImageUrl: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
 	};
 	
+	//todo
+	// public users : User [] = [];
+	//todo don't use any
+	public users : any = {
+		1: <User> {
+			firstName: "Kevin",
+			lastName: "Childs",
+			username: "kchilds",
+			profileImageUrl: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+		}
+	};
+	
 	constructor () {}
 }
