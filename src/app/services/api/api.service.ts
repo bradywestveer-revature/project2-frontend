@@ -69,6 +69,10 @@ export class ApiService {
 		this.handleResponse (this.get ("post/" + postId.toString ()), callback);
 	}
 	
+	getNewPosts (newestPostId : number, callback? : Function) : void {
+		this.handleResponse (this.get ("post/new/" + newestPostId.toString ()), callback);
+	}
+	
 	createPost (body : string, images : string [], callback? : Function) : void {
 		this.handleResponse (this.post ("post", {
 			body: body,
@@ -94,6 +98,6 @@ export class ApiService {
 	}
 	
 	deleteLike (likeId : number, callback? : Function) {
-		this.handleResponse (this.delete ("like/" + likeId), callback);
+		this.handleResponse (this.delete ("like/" + likeId.toString ()), callback);
 	}
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Post } from 'src/app/models/Post';
 import { ApiService } from 'src/app/services/api/api.service';
 import { DataService } from 'src/app/services/data/data.service';
 
@@ -9,6 +10,9 @@ import { DataService } from 'src/app/services/data/data.service';
 	styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
+	@Input ()
+	posts : Post [] = [];
+	
 	postInput : string = "";
 	
 	images : string [] = [];
@@ -40,13 +44,14 @@ export class CreatePostComponent implements OnInit {
 	}
 	
 	post () : void {
-		this.apiService.createPost (this.postInput, this.images, () : void => {
+		this.apiService.createPost (this.postInput, this.images, (data : any) : void => {
 			this.postInput = "";
 			
 			this.images = [];
 			this.previewImageUrls = [];
 			
-			
+			//posts is a reference to the same posts array that the parent uses, so changing it here will change it in the parent component
+			this.posts = this.posts.concat (data);
 		});
 	}
 	
