@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'src/app/models/User';
 
 @Component ({
 	selector: 'app-comment',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./comment.component.css']
 })
 export class CommentComponent implements OnInit {
-	body : string = "Nice flowers! :)";
+	@Input ()
+	user : User = <User> {};
+	
+	@Input ()
+	body : string = "";
 	
 	constructor () {}
 	

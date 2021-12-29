@@ -34,11 +34,11 @@
 	</div>
 	
 	<div [ngClass] = "{ 'displayNone': !showComments }" class = "postComments flexColumn">
-		<app-comment></app-comment>
+		<app-comment [body] = "'Nice flowers!'"></app-comment>
 		
-		<app-comment></app-comment>
+		<app-comment [body] = "'Wow! Looks great'"></app-comment>
 		
-		<app-comment></app-comment>
+		<app-comment [body] = "'098409823704958723490587234905872309829074183413712980123828327691798'"></app-comment>
 		
 		<div class = "postCommentsInputContainer flex">
 			<input class = "postCommentsInput smallFont" placeholder = "Write a comment..." />

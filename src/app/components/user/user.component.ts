@@ -9,7 +9,7 @@ import { User } from 'src/app/models/User';
 export class UserComponent implements OnInit {
 	@Input ()
 	// user : User = <User> {};
-	public user : User = <User> {
+	user : User = <User> {
 		firstName: "Kevin",
 		lastName: "Childs",
 		username: "kchilds",
