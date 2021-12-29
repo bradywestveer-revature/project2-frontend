@@ -25,7 +25,7 @@ export class ApiService {
 		}
 		
 		if (data.redirect !== null) {
-			this.router.navigate (data.redirect);
+			this.router.navigate ([data.redirect]);
 		}
 	}
 	
@@ -55,7 +55,7 @@ export class ApiService {
 	
 	//session
 	
-	logout (callback? : Function) {
+	deleteSession (callback? : Function) {
 		this.handleResponse (this.delete ("session"), callback);
 	}
 	
@@ -69,6 +69,13 @@ export class ApiService {
 		this.handleResponse (this.get ("post/" + postId.toString ()), callback);
 	}
 	
+	createPost (body : string, images : string [], callback? : Function) : void {
+		this.handleResponse (this.post ("post", {
+			body: body,
+			images: images
+		}), callback);
+	}
+	
 	//comment
 	
 	postComment (postId : number, body : string, callback? : Function) : void {
@@ -80,13 +87,13 @@ export class ApiService {
 	
 	//like
 	
-	likePost (postId : number, callback? : Function) : void {
+	createLike (postId : number, callback? : Function) : void {
 		this.handleResponse (this.post ("like/", {
 			postId: postId
 		}), callback);
 	}
 	
-	unlikePost (likeId : number, callback? : Function) {
+	deleteLike (likeId : number, callback? : Function) {
 		this.handleResponse (this.delete ("like/" + likeId), callback);
 	}
 }

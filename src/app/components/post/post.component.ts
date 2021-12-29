@@ -89,14 +89,14 @@ export class PostComponent implements OnInit {
 		this.liked = !this.liked;
 		
 		if (this.liked) {
-			this.apiService.likePost (this.post.id);
+			this.apiService.createLike (this.post.id);
 			
 			//change this.likes on client-side, set id to 0 to not conflict with other like ids
 			this.post.likes [this.dataService.user.id] = 0;
 		}
 		
 		else {
-			this.apiService.unlikePost (this.post.id);
+			this.apiService.deleteLike (this.post.likes [this.dataService.user.id]);
 			
 			//change this.likes on client-side
 			delete this.post.likes [this.dataService.user.id];
@@ -111,7 +111,7 @@ export class PostComponent implements OnInit {
 		});
 	}
 	
-	ngOnInit (): void {
+	ngOnInit () : void {
 		if (this.post.likes [this.dataService.user.id] !== undefined) {
 			this.liked = true;
 		}

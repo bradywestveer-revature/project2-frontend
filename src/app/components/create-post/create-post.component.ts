@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { ApiService } from 'src/app/services/api/api.service';
+import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
 	selector: 'app-create-post',
@@ -7,21 +9,46 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 	styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
-	constructor (private sanitizer : DomSanitizer) {}
+	postInput : string = "";
+	
+	images : string [] = [];
 	
 	previewImageUrls : SafeUrl [] = [];
 	
+	constructor (public dataService : DataService, private apiService : ApiService, private sanitizer : DomSanitizer) {}
+	
 	uploadImage (event : any) : void {
 		for (let i = 0; i < event.srcElement.files.length; i++) {
+			//convert image to base64 string and add to this.images
+			const fileReader = new FileReader ();
+			
+			fileReader.onloadend = () => {
+				this.images.push (<string> fileReader.result);
+			};
+			
+			fileReader.readAsDataURL (event.srcElement.files [i]);
+			
+			//add image url to this.previewImageUrls
 			this.previewImageUrls.push (this.sanitizer.bypassSecurityTrustUrl (URL.createObjectURL (event.srcElement.files [i])));
 		}
 	}
 	
 	removePreviewImage (index : number) : void {
 		this.previewImageUrls.splice (index, 1);
+		
+		this.images.splice (index, 1);
 	}
 	
-	ngOnInit (): void {
-		
+	post () : void {
+		this.apiService.createPost (this.postInput, this.images, () : void => {
+			this.postInput = "";
+			
+			this.images = [];
+			this.previewImageUrls = [];
+			
+			
+		});
 	}
+	
+	ngOnInit () : void {}
 }
