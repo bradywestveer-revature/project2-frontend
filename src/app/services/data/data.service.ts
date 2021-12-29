@@ -22,6 +22,7 @@ export class DataService {
 			firstName: "Kevin",
 			lastName: "C",
 			username: "kevinc",
+			email: "kevin@example.com",
 			profileImageUrl: "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg"
 		},
 		
@@ -29,6 +30,7 @@ export class DataService {
 			firstName: "David",
 			lastName: "H",
 			username: "davidh",
+			email: "david@example.com",
 			profileImageUrl: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
 		},
 		
@@ -36,6 +38,7 @@ export class DataService {
 			firstName: "Jason",
 			lastName: "C",
 			username: "jasonc",
+			email: "jason@example.com",
 			profileImageUrl: "https://i.stack.imgur.com/34AD2.jpg"
 		},
 		
@@ -43,6 +46,7 @@ export class DataService {
 			firstName: "Brady",
 			lastName: "W",
 			username: "bradyw",
+			email: "brady@example.com",
 			profileImageUrl: "https://i.pinimg.com/474x/76/94/84/769484dafbe89bf2b8a22379658956c4.jpg"
 		}
 	};

@@ -1,19 +1,13 @@
 <div class = "postsContainer flexColumn">
-	<app-user></app-user>
+	<app-user [user] = "user"></app-user>
 	
 	<div class = "email flex">
 		<p class = "mediumFont">✉</p>
 		
-		<p class = "mediumFont">{{ email }}</p>
+		<p class = "mediumFont">{{ user.email }}</p>
 	</div>
 	
-	<app-create-post></app-create-post>
+	<app-create-post [posts] = "posts"></app-create-post>
 	
-	<app-post></app-post>
-	
-	<app-post></app-post>
-	
-	<app-post></app-post>
-	
-	<app-post></app-post>
+	<app-post *ngFor = "let post of posts" [user] = "dataService.users [post.creatorId]" [post] = "post"></app-post>
 </div>
