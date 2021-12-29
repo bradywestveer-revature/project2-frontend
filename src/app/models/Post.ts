@@ -5,6 +5,9 @@ export interface Post {
 	creatorId : number;
 	body : string;
 	imageUrls : string [];
-	likes : number [];
+	
+	//todo use more descriptive type than just any
+	likes : any;
+	
 	comments : Comment [];
 };

@@ -14,7 +14,7 @@ export class DataService {
 	
 	//todo
 	// public users : User [] = [];
-	//todo don't use any
+	//todo use more descriptive type than just any
 	public users : any = {
 		1: <User> {
 			firstName: "Kevin",

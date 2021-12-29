@@ -23,13 +23,13 @@
 		</div>
 		
 		<div class = "postControl flex">
-			<a class = "flex" (click) = "liked = !liked;">
+			<a class = "flex" (click) = "toggleLike ();">
 				<img *ngIf = "liked" src = "assets/fire.png" />
 				
 				<img *ngIf = "!liked" src = "assets/fire_gray.png" />
 			</a>
 			
-			<p class = "smallFont">{{ post.likes.length }}</p>
+			<p class = "smallFont">{{ getLikeCount () }}</p>
 		</div>
 	</div>
 	

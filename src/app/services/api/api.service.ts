@@ -7,15 +7,17 @@ import { firstValueFrom, Observable } from 'rxjs';
 	providedIn: 'root'
 })
 export class ApiService {
-	baseUrl : string = "localhost/";
+	baseUrl : string = "http://localhost/";
 	
 	constructor (private httpClient : HttpClient, private router : Router) {}
 	
-	async handleResponse (response : Observable <any>, callback : Function) : Promise <any> {
+	async handleResponse (response : Observable <any>, callback? : Function) : Promise <any> {
 		const data : any = await firstValueFrom (response);
 		
 		if (data.success) {
-			await callback (data);
+			if (typeof callback !== "undefined") {
+				await callback (data);
+			}
 		}
 		
 		else {
@@ -51,22 +53,40 @@ export class ApiService {
 		});
 	}
 	
+	//session
+	
+	logout (callback? : Function) {
+		this.handleResponse (this.delete ("session"), callback);
+	}
+	
 	//user
 	
 	
 	
 	//post
 	
-	getPost (postId : number, callback : Function) : void {
+	getPost (postId : number, callback? : Function) : void {
 		this.handleResponse (this.get ("post/" + postId.toString ()), callback);
 	}
 	
 	//comment
 	
-	postComment (postId : number, body : string, callback : Function) : void {
+	postComment (postId : number, body : string, callback? : Function) : void {
 		this.handleResponse (this.post ("comment", {
 			id: postId,
 			body: body
 		}), callback);
+	}
+	
+	//like
+	
+	likePost (postId : number, callback? : Function) : void {
+		this.handleResponse (this.post ("like/", {
+			postId: postId
+		}), callback);
+	}
+	
+	unlikePost (likeId : number, callback? : Function) {
+		this.handleResponse (this.delete ("like/" + likeId), callback);
 	}
 }

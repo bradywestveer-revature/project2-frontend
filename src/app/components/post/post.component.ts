@@ -35,22 +35,27 @@ export class PostComponent implements OnInit {
 			"https://www.thespruce.com/thmb/TIUYmTRJ3NOFnY9LJ6FzMd_9oBc=/2571x1928/smart/filters:no_upscale()/small-garden-ideas-and-inspiration-4101842-01-5e0462c2365e42de86a4f3ebc2152c1b.jpg"
 		],
 		
-		likes: [
-			1, 2, 3, 4, 5, 6, 7, 12, 34
-		],
+		likes: {
+			1: 1,
+			2: 2,
+			3: 3
+		},
 		
 		comments: [
 			{
+				id: 1,
 				creatorId: 1,
 				body: "Nice flowers!"
 			},
 			
 			{
+				id: 2,
 				creatorId: 1,
 				body: "Wow, looks good."
 			},
 			
 			{
+				id: 3,
 				creatorId: 1,
 				body: "098409823704958723490587234905872309829074183413712980123828327691798"
 			}
@@ -75,13 +80,40 @@ export class PostComponent implements OnInit {
 		this.currentImageIndex = Math.min (this.post.imageUrls.length - 1, this.currentImageIndex + 1);
 	}
 	
+	//todo do this inline in html somehow
+	getLikeCount () : number {
+		return Object.keys (this.post.likes).length;
+	}
+	
+	toggleLike () : void {
+		this.liked = !this.liked;
+		
+		if (this.liked) {
+			this.apiService.likePost (this.post.id);
+			
+			//change this.likes on client-side, set id to 0 to not conflict with other like ids
+			this.post.likes [this.dataService.user.id] = 0;
+		}
+		
+		else {
+			this.apiService.unlikePost (this.post.id);
+			
+			//change this.likes on client-side
+			delete this.post.likes [this.dataService.user.id];
+		}
+	}
+	
 	postComment () : void {
-		this.apiService.postComment (this.post.id, this.postCommentInput, (data : any) : void => {
+		this.apiService.postComment (this.post.id, this.postCommentInput, () : void => {
 			this.apiService.getPost (this.post.id, (data : any) : void => {
 				this.post = data.data.post;
 			});
 		});
 	}
 	
-	ngOnInit (): void {}
+	ngOnInit (): void {
+		if (this.post.likes [this.dataService.user.id] !== undefined) {
+			this.liked = true;
+		}
+	}
 }
