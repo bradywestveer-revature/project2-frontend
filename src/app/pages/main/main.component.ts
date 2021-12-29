@@ -115,7 +115,7 @@ export class MainComponent implements OnInit {
 			body: "This is Brady. I attached an image of my dogs. I liked this post, but no else else has yet.",
 			
 			imageUrls : [
-				"https://lh3.googleusercontent.com/oX5F0zOfeiqsxKrmLiB3xh3th4kDsRtX1mNYFn-vpcGMTANHXu6m8mmbMYPjZwP4Nwx02Ok0t7QQxN_oJFtYOgvywdzs7x8dkbhH6d7Sm0yrvkZ3fqHQz2PJ9X1XjTVx3cMV3pdqhVzra4SS2LP93Di_2wWeUE2CPeVCFY6exA4jMRxfLWV3r4ldUygBwWFsnMlbHAoQ_aRH7WFcAmH6GnPJ42Ds7tF03mrkwzt5IDpZ3udXajq3ZrP7r9fIc4B1xV69MLKpWuZe_74s45uL0FPf8wjESbxpbrdzsU5l2ExWvPLy4FhEgEFC_OCALr1XSSUSd37Szi9tfgl48P5IcCXtN-3lXz-FuVRgeJZ_mmnQX-TRORaW8vn1Mz8rSw3_TSSSS0W7vbXPr5q8S408sv2jta-n95_iV9bB1lKNTNGJLTjI-dsQTTyqylaPZrcX8BT9InZcV09Vzz8_a5SS8FxDElilAeDuelUYKSknfQlp88HGFACGr_ISYQpRSjHYf2wb4wcQPNire9g0FpX84RbDohoNVBz6z3Uo1f7BcCo9LWACN5ccIHkQnu8j3wDNhL-m--XuUYjGYv8I4IJn65_ECX2lXMQvamA7JhWJT1F5yThuxSLvSqlbYqS_ycachWeQpPbJl1K1spNHCfhOzO0Dv29gI6_2Q_7yWrZX2NNiGPM3s_wLgMRjF7_lb_2Nn5QmcqnMQKeFrZO2nM0Bw-eAAg=w727-h969-no?authuser=0"
+				"https://cdn.discordapp.com/attachments/796812457188130816/925867939679318158/dogs.jpg"
 			],
 			
 			likes: {
