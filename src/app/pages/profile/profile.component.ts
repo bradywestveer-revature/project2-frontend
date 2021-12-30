@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 import { Post } from 'src/app/models/Post';
 import { User } from 'src/app/models/User';
+import { ApiService } from 'src/app/services/api/api.service';
 import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
@@ -14,6 +16,8 @@ import { DataService } from 'src/app/services/data/data.service';
 })
 export class ProfileComponent implements OnInit {
 	user : User = <User> {};
+	
+	currentPage : number = 1;
 	
 	// posts : Post [] = [];
 	//todo
@@ -46,10 +50,23 @@ export class ProfileComponent implements OnInit {
 		}
 	];
 	
-	constructor (private router : ActivatedRoute, public dataService : DataService) {}
+	constructor (private router : ActivatedRoute, public dataService : DataService, private apiService : ApiService) {}
+	
+	getPosts () : void {
+		this.apiService.getUserPosts (this.user.id, this.currentPage, (data : any) : void => {
+			this.posts = data.concat (this.posts);
+		});
+		
+		//todo if there is an error getting posts, a page of posts would be skipped, maybe get by post id instead?
+		this.currentPage += 1;
+	}
 	
 	ngOnInit () : void {
-		this.router.params.subscribe (paramaters => {
+		this.apiService.getUsers (async (data : any) : Promise <any> => {
+			this.dataService.users = data.data;
+			
+			const paramaters = await firstValueFrom (this.router.params);
+			
 			//todo slow
 			for (let i = 0; i < Object.keys (this.dataService.users).length; i++) {
 				//if user's username matches username from URL
@@ -59,6 +76,8 @@ export class ProfileComponent implements OnInit {
 					break;
 				}
 			}
+			
+			this.getPosts ();
 		});
 	}
 }

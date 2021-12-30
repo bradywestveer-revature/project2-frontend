@@ -44,14 +44,16 @@ export class CreatePostComponent implements OnInit {
 	}
 	
 	post () : void {
-		this.apiService.createPost (this.postInput, this.images, (data : any) : void => {
+		this.apiService.createPost (this.postInput, this.images, () : void => {
 			this.postInput = "";
 			
 			this.images = [];
 			this.previewImageUrls = [];
 			
-			//posts is a reference to the same posts array that the parent uses, so changing it here will change it in the parent component
-			this.posts = this.posts.concat (data);
+			this.apiService.getNewPosts (this.posts [0].id, (data : any) : void => {
+				//posts is a reference to the same posts array that the parent uses, so changing it here will change it in the parent component
+				this.posts = data.concat (this.posts);
+			});
 		});
 	}
 	

@@ -72,11 +72,15 @@ export class ApiService {
 	}
 	
 	getPosts (page : number, callback? : Function) : void {
-		this.handleResponse (this.get ("post/page/" + page.toString ()), callback);
+		this.handleResponse (this.get ("post?page=" + page.toString ()), callback);
 	}
 	
-	getNewPosts (newestPostId : number, callback? : Function) : void {
-		this.handleResponse (this.get ("post/new/" + newestPostId.toString ()), callback);
+	getNewPosts (lastPostId : number, callback? : Function) : void {
+		this.handleResponse (this.get ("post?lastPostId=" + lastPostId.toString ()), callback);
+	}
+	
+	getUserPosts (userId : number, page : number, callback? : Function) : void {
+		this.handleResponse (this.get ("post?userId=" + userId.toString () + "&page=" + page.toString ()), callback);
 	}
 	
 	createPost (body : string, images : string [], callback? : Function) : void {
