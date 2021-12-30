@@ -61,12 +61,18 @@ export class ApiService {
 	
 	//user
 	
-	
+	getUsers (callback? : Function) : void {
+		this.handleResponse (this.get ("user"), callback);
+	}
 	
 	//post
 	
 	getPost (postId : number, callback? : Function) : void {
 		this.handleResponse (this.get ("post/" + postId.toString ()), callback);
+	}
+	
+	getPosts (page : number, callback? : Function) : void {
+		this.handleResponse (this.get ("post/page/" + page.toString ()), callback);
 	}
 	
 	getNewPosts (newestPostId : number, callback? : Function) : void {

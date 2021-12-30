@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/models/Post';
+import { ApiService } from 'src/app/services/api/api.service';
 import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
@@ -11,6 +12,8 @@ import { DataService } from 'src/app/services/data/data.service';
 	}
 })
 export class MainComponent implements OnInit {
+	currentPage : number = 1;
+	
 	// posts : Post [] = [];
 	//todo
 	posts : Post [] = [
@@ -132,7 +135,22 @@ export class MainComponent implements OnInit {
 		}
 	];
 	
-	constructor (public dataService : DataService) {}
+	constructor (public dataService : DataService, private apiService : ApiService) {}
 	
-	ngOnInit () : void {}
+	getPosts () : void {
+		this.apiService.getPosts (this.currentPage, (data : any) : void => {
+			this.posts = this.posts.concat (data.data);
+		});
+		
+		//todo if there is an error getting posts, a page of posts would be skipped, maybe get by post id instead?
+		this.currentPage += 1;
+	}
+	
+	ngOnInit () : void {
+		this.apiService.getUsers ((data : any) : void => {
+			this.dataService.users = data.data;
+			
+			this.getPosts ();
+		});
+	}
 }
