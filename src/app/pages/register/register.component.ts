@@ -125,7 +125,7 @@ export class RegisterComponent implements OnInit {
       this.user.email = this.emailInput;
       this.user.username = this.usernameInput;
       this.user.password = this.passwordInput;            
-      this.apiServ.registerUser(this.user, (data : any) : void => {
+      this.apiServ.createUser(this.user, (data : any) : void => {
         this.errorTextClass = "errorText reg-green";
         this.errMessage = String(data.message);        
         alert(data.message);

@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit {
     }
     this.user.password = this.passwordInput;
     //this.apiServ.login(this.user, this.loginUserCallback);
-    this.apiServ.login(this.user, (data : any) : void => {
+    this.apiServ.createSession(this.usernameInput, this.passwordInput, (data : any) : void => {
       console.log("(data : any) : void => entered")
       console.log("data.data="+data.data.id + " "+data.data.firstName)
       this.dataServ.user = <User>{  // Our session GET returns User

@@ -26,13 +26,7 @@ export class ApiService {
 		}
 		
 		if (data.redirect !== null) {
-<<<<<<< HEAD
-			console.log("about to navigate to " + data.redirect);
-			//this.router.navigate (data.redirect);
-			this.router.navigate([data.redirect]);
-=======
 			this.router.navigate ([data.redirect]);
->>>>>>> dev
 		}
 	}
 	
@@ -61,17 +55,6 @@ export class ApiService {
 	}
 	
 	//session
-<<<<<<< HEAD
-	checkSession(callback? : Function) {
-		this.handleResponse(this.get("session"), callback);
-	}
-
-	login (user: User, callback? : Function) {
-		this.handleResponse(this.post("session", user), callback);
-	}
-
-	logout (callback? : Function) {
-=======
 	
 	createSession (identifier : string, password : string, callback? : Function) {
 		this.handleResponse (this.post ("session", {
@@ -81,24 +64,13 @@ export class ApiService {
 	}
 	
 	deleteSession (callback? : Function) {
->>>>>>> dev
 		this.handleResponse (this.delete ("session"), callback);
 	}
 	
 	//user
-<<<<<<< HEAD
-	registerUser (user: User, callback? : Function) : void {
-		this.handleResponse(this.post("user", user), callback);
-=======
 	
-	createUser (firstName : String, lastName : string, email : string, username : string, password : string, callback? : Function) {
-		this.handleResponse (this.post ("user", {
-			firstName: firstName,
-			lastName: lastName,
-			email: email,
-			username: username,
-			password: password
-		}), callback);
+	createUser (user : User, callback? : Function) {
+		this.handleResponse (this.post ("user", user), callback);
 	}
 	
 	getUsers (callback? : Function) : void {
@@ -111,7 +83,6 @@ export class ApiService {
 	
 	updateUser (user : User, callback? : Function) : void {
 		this.handleResponse (this.put ("user/" + user.id.toString (), user), callback);
->>>>>>> dev
 	}
 	
 	//post
@@ -134,7 +105,7 @@ export class ApiService {
 	getNewPosts (lastPostId : number, callback? : Function) : void {
 		this.handleResponse (this.get ("post?lastPostId=" + lastPostId.toString ()), callback);
 	}
-	
+
 	getUserPosts (userId : number, page : number, callback? : Function) : void {
 		this.handleResponse (this.get ("post?userId=" + userId.toString () + "&page=" + page.toString ()), callback);
 	}
