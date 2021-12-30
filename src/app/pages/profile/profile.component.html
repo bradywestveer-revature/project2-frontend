@@ -1,16 +1,29 @@
 <div class="listContainer flexColumn">
-    <app-user [hidden]="hidden" [user]="user"></app-user>
-    <app-edit-profile [hidden]="!hidden"></app-edit-profile>
+    
+    <div *ngIf="!showEdit" class="flexColumn userText userContainer">
+        <img src="{{ user.profileImageUrl }}">
+        <p class="inputText">{{user.firstName}}</p>
+        <p class="inputText">{{user.lastName}}</p>
+        <p class="inputText">@{{user.username}}</p>
+        <p class="inputText">{{user.email}}</p>
+    </div>
 
-    <div class="email flex">
-        <p [hidden]="hidden" class="mediumFont">✉</p>
+    <div *ngIf="showEdit" class="flexColumn userText userContainer">
+        <img src="{{ user.profileImageUrl }}">
+        <input class="inputText" type="text" placeholder={{user.firstName}} >
+        <input class="inputText" type="text" placeholder={{user.lastName}} >
+        <input class="inputText" type="text" placeholder={{user.username}} >
+        <input class="inputText" type="email" placeholder={{user.email}}>
+        <input class="inputText" type="password" placeholder="New Password" > 
 
-        <p [hidden]="hidden" class="mediumFont">{{ user.email }}</p>
-
+        <div *ngIf="showEdit" class="buttons">
+            <button>Submit</button>
+            <button (click)="showEdit = !showEdit">Cancel</button>
+        </div>
     </div>
 
     <div>
-        <button [hidden]="hidden" (click)="hidden = !hidden">Edit Profile</button>
+        <button [hidden]="showEdit" (click)="showEdit = !showEdit">Edit Profile</button>
     </div>
 
     <app-posts [posts]="posts" (scrollBottom)="getPosts ();" style="padding-top: 0;"></app-posts>

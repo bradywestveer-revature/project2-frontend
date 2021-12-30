@@ -1,18 +1,6 @@
 <div class="userContainer flex" routerLink="/@{{ user.username }}">
-    <img src="{{ user.profileImageUrl }}">
+    
 
-    <form>
-        <div class="flexColumn userText">
-            <input class="inputText" type="text" placeholder={{user.firstName}} [(ngModel)]="firstNameInput">
-            <input class="inputText" type="text" placeholder={{user.lastName}} [(ngModel)]="lastNameInput">
-            <input class="inputText" type="text" placeholder={{user.username}} [(ngModel)]="usernameInput">
-            <input class="inputText" type="email" placeholder={{user.email}} [(ngModel)]="emailInput">
-            <input class="inputText" type="password" placeholder="New Password" [(ngModel)]="newPasswordInput">
-
-            <div class="buttons">
-                <button>Submit</button>
-                <button id="cancel" (click)="hidden = !hidden">Cancel</button>
-            </div>
-        </div>
-    </form>
+        
+    
 </div>

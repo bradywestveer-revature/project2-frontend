@@ -2,4 +2,32 @@
 	gap: 5px;
 }
 
+.buttons{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+input{
+    background-color: black;
+    background: rgba(0, 0, 0, .5);
+	padding: 10px;
+}
+
+.userContainer {
+	justify-content: space-between;
+	gap: 7px;
+	outline: none;
+}
+
+.userContainer > img {
+	object-fit: contain;
+	height: 150px;
+	border-radius: 50%;
+}
+
+.userText {
+	gap: 3px;
+}
+
 
