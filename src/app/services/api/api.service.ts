@@ -69,14 +69,8 @@ export class ApiService {
 	
 	//user
 	
-	createUser (firstName : String, lastName : string, email : string, username : string, password : string, callback? : Function) {
-		this.handleResponse (this.post ("user", {
-			firstName: firstName,
-			lastName: lastName,
-			email: email,
-			username: username,
-			password: password
-		}), callback);
+	createUser (user : User, callback? : Function) {
+		this.handleResponse (this.post ("user", user), callback);
 	}
 	
 	getUsers (callback? : Function) : void {
@@ -111,7 +105,7 @@ export class ApiService {
 	getNewPosts (lastPostId : number, callback? : Function) : void {
 		this.handleResponse (this.get ("post?lastPostId=" + lastPostId.toString ()), callback);
 	}
-	
+
 	getUserPosts (userId : number, page : number, callback? : Function) : void {
 		this.handleResponse (this.get ("post?userId=" + userId.toString () + "&page=" + page.toString ()), callback);
 	}
