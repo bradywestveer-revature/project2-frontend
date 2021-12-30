@@ -1,0 +1,3 @@
+<app-create-post [posts] = "posts"></app-create-post>
+
+<app-post *ngFor = "let post of posts" [user] = "dataService.users [post.creatorId]" [post] = "post"></app-post>

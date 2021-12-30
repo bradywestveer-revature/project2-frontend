@@ -7,7 +7,5 @@
 		<p class = "mediumFont">{{ user.email }}</p>
 	</div>
 	
-	<app-create-post [posts] = "posts"></app-create-post>
-	
-	<app-post *ngFor = "let post of posts" [user] = "dataService.users [post.creatorId]" [post] = "post"></app-post>
+	<app-posts [posts] = "posts" style = "padding-top: 0;"></app-posts>
 </div>

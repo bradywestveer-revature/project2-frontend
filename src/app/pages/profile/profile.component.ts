@@ -54,7 +54,7 @@ export class ProfileComponent implements OnInit {
 	
 	getPosts () : void {
 		this.apiService.getUserPosts (this.user.id, this.currentPage, (data : any) : void => {
-			this.posts = data.concat (this.posts);
+			this.posts = data.data.concat (this.posts);
 		});
 		
 		//todo if there is an error getting posts, a page of posts would be skipped, maybe get by post id instead?

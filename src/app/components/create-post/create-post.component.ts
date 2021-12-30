@@ -51,8 +51,8 @@ export class CreatePostComponent implements OnInit {
 			this.previewImageUrls = [];
 			
 			this.apiService.getNewPosts (this.posts [0].id, (data : any) : void => {
-				//posts is a reference to the same posts array that the parent uses, so changing it here will change it in the parent component
-				this.posts = data.concat (this.posts);
+				//this.posts references the passed value from the parent component
+				this.posts = data.data.concat (this.posts);
 			});
 		});
 	}
