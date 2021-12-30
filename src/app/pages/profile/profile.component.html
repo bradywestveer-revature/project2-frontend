@@ -1,4 +1,4 @@
-<div class = "postsContainer flexColumn">
+<div class = "listContainer flexColumn">
 	<app-user [user] = "user"></app-user>
 	
 	<div class = "email flex">
@@ -7,5 +7,5 @@
 		<p class = "mediumFont">{{ user.email }}</p>
 	</div>
 	
-	<app-posts [posts] = "posts" style = "padding-top: 0;"></app-posts>
+	<app-posts [posts] = "posts" (scrollBottom) = "getPosts ();" style = "padding-top: 0;"></app-posts>
 </div>

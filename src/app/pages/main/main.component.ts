@@ -14,6 +14,8 @@ import { DataService } from 'src/app/services/data/data.service';
 export class MainComponent implements OnInit {
 	currentPage : number = 1;
 	
+	waitingForPosts : boolean = false;
+	
 	// posts : Post [] = [];
 	//todo
 	posts : Post [] = [
@@ -138,12 +140,19 @@ export class MainComponent implements OnInit {
 	constructor (public dataService : DataService, private apiService : ApiService) {}
 	
 	getPosts () : void {
-		this.apiService.getPosts (this.currentPage, (data : any) : void => {
-			this.posts = data.data.concat (this.posts);
-		});
+		if (!this.waitingForPosts) {
+			this.waitingForPosts = true;
+			
+			this.apiService.getPosts (this.currentPage, (data : any) : void => {
+				this.posts = data.data.concat (this.posts);
+				
+				this.currentPage += 1;
+				
+				this.waitingForPosts = false;
+			});
+		}
 		
-		//todo if there is an error getting posts, a page of posts would be skipped, maybe get by post id instead?
-		this.currentPage += 1;
+		//todo if there's an error, we can never get more posts
 	}
 	
 	ngOnInit () : void {

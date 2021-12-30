@@ -58,7 +58,7 @@ export class PostComponent implements OnInit {
 	}
 	
 	postComment () : void {
-		this.apiService.postComment (this.post.id, this.postCommentInput, () : void => {
+		this.apiService.createComment (this.post.id, this.postCommentInput, () : void => {
 			this.apiService.getPost (this.post.id, (data : any) : void => {
 				this.post = data.data;
 			});

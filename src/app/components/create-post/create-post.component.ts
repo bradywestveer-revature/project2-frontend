@@ -22,7 +22,7 @@ export class CreatePostComponent implements OnInit {
 	constructor (public dataService : DataService, private apiService : ApiService, private sanitizer : DomSanitizer) {}
 	
 	uploadImage (event : any) : void {
-		for (let i = 0; i < event.srcElement.files.length; i++) {
+		for (let i = 0; i < event.target.files.length; i++) {
 			//convert image to base64 string and add to this.images
 			const fileReader = new FileReader ();
 			
@@ -30,10 +30,10 @@ export class CreatePostComponent implements OnInit {
 				this.images.push (<string> fileReader.result);
 			};
 			
-			fileReader.readAsDataURL (event.srcElement.files [i]);
+			fileReader.readAsDataURL (event.target.files [i]);
 			
 			//add image url to this.previewImageUrls
-			this.previewImageUrls.push (this.sanitizer.bypassSecurityTrustUrl (URL.createObjectURL (event.srcElement.files [i])));
+			this.previewImageUrls.push (this.sanitizer.bypassSecurityTrustUrl (URL.createObjectURL (event.target.files [i])));
 		}
 	}
 	

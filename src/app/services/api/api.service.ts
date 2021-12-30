@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { firstValueFrom, Observable } from 'rxjs';
+import { User } from 'src/app/models/User';
 
 @Injectable ({
 	providedIn: 'root'
@@ -65,6 +66,14 @@ export class ApiService {
 		this.handleResponse (this.get ("user"), callback);
 	}
 	
+	getUser (userId : number, callback? : Function) : void {
+		this.handleResponse (this.get ("user/" + userId.toString ()), callback);
+	}
+	
+	updateUser (user : User, callback? : Function) : void {
+		this.handleResponse (this.put ("user", user), callback);
+	}
+	
 	//post
 	
 	createPost (body : string, images : string [], callback? : Function) : void {
@@ -92,7 +101,7 @@ export class ApiService {
 	
 	//comment
 	
-	postComment (postId : number, body : string, callback? : Function) : void {
+	createComment (postId : number, body : string, callback? : Function) : void {
 		this.handleResponse (this.post ("comment", {
 			postId: postId,
 			body: body
