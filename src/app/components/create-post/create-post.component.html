@@ -1,7 +1,7 @@
 <div class = "createPostContainer flexColumn">
-	<app-user></app-user>
+	<app-user [user] = "dataService.user"></app-user>
 	
-	<textarea class = "createPostInput mediumFont" placeholder = "Write a post..."></textarea>
+	<textarea [(ngModel)] = "postInput" class = "createPostInput mediumFont" placeholder = "Write a post..."></textarea>
 	
 	<div class = "createPostPreviewImages flex" *ngIf = "previewImageUrls.length > 0">
 		<div *ngFor = "let url of previewImageUrls; index as i" class = "previewImageContainer">
@@ -15,9 +15,9 @@
 		<label class = "addPostImagesLabel smallFont">
 			Add Images
 			
-			<input type = "file" multiple class = "addPostImagesInput smallFont" (input) = "uploadImage ($event);" />
+			<input type = "file" accept = "image/*" multiple class = "addPostImagesInput smallFont" (input) = "uploadImage ($event);" />
 		</label>
 		
-		<button class = "smallFont">Post</button>
+		<button (click) = "post ();" class = "smallFont">Post</button>
 	</div>
 </div>

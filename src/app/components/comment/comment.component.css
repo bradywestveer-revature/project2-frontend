@@ -1,5 +1,9 @@
 .comment {
 	width: 100%;
 	align-items: flex-start;
-	gap: 8px;
+	gap: 10px;
+}
+
+.comment > p {
+	word-break: break-word;
 }

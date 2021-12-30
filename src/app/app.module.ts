@@ -14,6 +14,8 @@ import { CommentComponent } from './components/comment/comment.component';
 import { UserComponent } from './components/user/user.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { FormsModule } from '@angular/forms';
+import { PostsComponent } from './components/posts/posts.component';
 
 @NgModule({
 	declarations: [
@@ -27,12 +29,14 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 		CommentComponent,
 		UserComponent,
 		CreatePostComponent,
-		EditProfileComponent
+		EditProfileComponent,
+		PostsComponent
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
-		HttpClientModule
+		HttpClientModule,
+		FormsModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
