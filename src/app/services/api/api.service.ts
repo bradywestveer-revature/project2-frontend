@@ -69,6 +69,16 @@ export class ApiService {
 	
 	//user
 	
+	createUser (firstName : String, lastName : string, email : string, username : string, password : string, callback? : Function) {
+		this.handleResponse (this.post ("user", {
+			firstName: firstName,
+			lastName: lastName,
+			email: email,
+			username: username,
+			password: password
+		}), callback);
+	}
+	
 	getUsers (callback? : Function) : void {
 		this.handleResponse (this.get ("user"), callback);
 	}
