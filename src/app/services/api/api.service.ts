@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { firstValueFrom, Observable } from 'rxjs';
+import { User } from 'src/app/models/User';
 
 @Injectable ({
 	providedIn: 'root'
@@ -25,7 +26,9 @@ export class ApiService {
 		}
 		
 		if (data.redirect !== null) {
-			this.router.navigate (data.redirect);
+			console.log("about to navigate to " + data.redirect);
+			//this.router.navigate (data.redirect);
+			this.router.navigate([data.redirect]);
 		}
 	}
 	
@@ -54,14 +57,22 @@ export class ApiService {
 	}
 	
 	//session
-	
+	checkSession(callback? : Function) {
+		this.handleResponse(this.get("session"), callback);
+	}
+
+	login (user: User, callback? : Function) {
+		this.handleResponse(this.post("session", user), callback);
+	}
+
 	logout (callback? : Function) {
 		this.handleResponse (this.delete ("session"), callback);
 	}
 	
 	//user
-	
-	
+	registerUser (user: User, callback? : Function) : void {
+		this.handleResponse(this.post("user", user), callback);
+	}
 	
 	//post
 	

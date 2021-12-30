@@ -6,6 +6,6 @@
 	<div [ngClass] = "{ 'hidden': dataService.user.username === undefined }" id = "headerUser" class = "flex">
 		<app-user [user] = "dataService.user"></app-user>
 		
-		<a class = "smallFont">Logout</a>
+		<a class = "smallFont" (click)="logout()">Logout</a>
 	</div>
 </div>
