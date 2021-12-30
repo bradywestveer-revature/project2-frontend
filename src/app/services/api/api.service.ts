@@ -88,7 +88,7 @@ export class ApiService {
 	}
 	
 	updateUser (user : User, callback? : Function) : void {
-		this.handleResponse (this.put ("user", user), callback);
+		this.handleResponse (this.put ("user/" + user.id.toString (), user), callback);
 	}
 	
 	//post
