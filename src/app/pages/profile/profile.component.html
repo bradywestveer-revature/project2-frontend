@@ -1,19 +1,25 @@
-<div class = "postsContainer flexColumn">
-	<app-user></app-user>
-	
-	<div class = "email flex">
-		<p class = "mediumFont">✉</p>
-		
-		<p class = "mediumFont">{{ email }}</p>
-	</div>
-	
-	<app-create-post></app-create-post>
-	
-	<app-post></app-post>
-	
-	<app-post></app-post>
-	
-	<app-post></app-post>
-	
-	<app-post></app-post>
+<div class="postsContainer flexColumn">
+    <app-user [hidden]="hidden"></app-user>
+    <app-edit-profile [hidden]="!hidden"></app-edit-profile>
+    
+    <div class="email flex">
+        <p [hidden]="hidden" class="mediumFont">✉</p>
+
+        <p [hidden]="hidden" class="mediumFont">{{ email }}</p>
+
+    </div>
+
+    <div>
+        <button [hidden]="hidden" (click)="hidden = !hidden">Edit Profile</button>
+    </div>
+
+    <app-create-post></app-create-post>
+
+    <app-post></app-post>
+
+    <app-post></app-post>
+
+    <app-post></app-post>
+
+    <app-post></app-post>
 </div>

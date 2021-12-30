@@ -13,6 +13,7 @@ import { PostComponent } from './components/post/post.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { UserComponent } from './components/user/user.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 @NgModule({
 	declarations: [
@@ -25,7 +26,8 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 		PostComponent,
 		CommentComponent,
 		UserComponent,
-		CreatePostComponent
+		CreatePostComponent,
+		EditProfileComponent
 	],
 	imports: [
 		BrowserModule,

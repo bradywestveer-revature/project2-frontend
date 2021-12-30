@@ -15,10 +15,13 @@ export class ProfileComponent implements OnInit {
 	username : string = "";
 	
 	email : string = "me@example.com";
+
+	hidden: boolean = false;
 	
 	ngOnInit () : void {
 		this.router.params.subscribe (paramaters => {
 			this.username = paramaters ["username"];
 		});
 	}
+
 }
