@@ -24,9 +24,9 @@
 		
 		<div class = "postControl flex">
 			<a class = "flex" (click) = "toggleLike ();">
-				<img *ngIf = "liked" src = "assets/fire.png" />
+				<img [ngClass] = "{ 'displayNone': !liked }" src = "assets/fire.png" />
 				
-				<img *ngIf = "!liked" src = "assets/fire_gray.png" />
+				<img [ngClass] = "{ 'displayNone': liked }" src = "assets/fire_gray.png" />
 			</a>
 			
 			<p class = "smallFont">{{ getLikeCount () }}</p>
