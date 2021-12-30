@@ -67,6 +67,13 @@ export class ApiService {
 	
 	//post
 	
+	createPost (body : string, images : string [], callback? : Function) : void {
+		this.handleResponse (this.post ("post", {
+			body: body,
+			images: images
+		}), callback);
+	}
+	
 	getPost (postId : number, callback? : Function) : void {
 		this.handleResponse (this.get ("post/" + postId.toString ()), callback);
 	}
@@ -83,18 +90,11 @@ export class ApiService {
 		this.handleResponse (this.get ("post?userId=" + userId.toString () + "&page=" + page.toString ()), callback);
 	}
 	
-	createPost (body : string, images : string [], callback? : Function) : void {
-		this.handleResponse (this.post ("post", {
-			body: body,
-			images: images
-		}), callback);
-	}
-	
 	//comment
 	
 	postComment (postId : number, body : string, callback? : Function) : void {
 		this.handleResponse (this.post ("comment", {
-			id: postId,
+			postId: postId,
 			body: body
 		}), callback);
 	}
