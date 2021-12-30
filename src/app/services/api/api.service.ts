@@ -56,6 +56,13 @@ export class ApiService {
 	
 	//session
 	
+	createSession (identifier : string, password : string, callback? : Function) {
+		this.handleResponse (this.post ("session", {
+			identifier: identifier,
+			password: password
+		}), callback);
+	}
+	
 	deleteSession (callback? : Function) {
 		this.handleResponse (this.delete ("session"), callback);
 	}
