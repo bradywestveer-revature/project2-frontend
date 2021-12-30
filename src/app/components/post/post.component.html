@@ -3,7 +3,7 @@
 	
 	<p class = "postBody mediumFont">{{ post.body }}</p>
 	
-	<div class = "postImages">
+	<div *ngIf = "post.imageUrls.length > 0" class = "postImages">
 		<div class = "postImagesControls flex">
 			<button class = "postImagesPreviousButton largeFont" class = "postImagesControl" (click) = "previousImage ();" [ngClass] = "{ 'hidden': currentImageIndex === 0 }">◀</button>
 			
@@ -24,9 +24,9 @@
 		
 		<div class = "postControl flex">
 			<a class = "flex" (click) = "toggleLike ();">
-				<img *ngIf = "liked" src = "assets/fire.png" />
+				<img [ngClass] = "{ 'displayNone': !liked }" src = "assets/fire.png" />
 				
-				<img *ngIf = "!liked" src = "assets/fire_gray.png" />
+				<img [ngClass] = "{ 'displayNone': liked }" src = "assets/fire_gray.png" />
 			</a>
 			
 			<p class = "smallFont">{{ getLikeCount () }}</p>

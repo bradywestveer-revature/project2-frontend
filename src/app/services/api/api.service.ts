@@ -26,9 +26,13 @@ export class ApiService {
 		}
 		
 		if (data.redirect !== null) {
+<<<<<<< HEAD
 			console.log("about to navigate to " + data.redirect);
 			//this.router.navigate (data.redirect);
 			this.router.navigate([data.redirect]);
+=======
+			this.router.navigate ([data.redirect]);
+>>>>>>> dev
 		}
 	}
 	
@@ -57,6 +61,7 @@ export class ApiService {
 	}
 	
 	//session
+<<<<<<< HEAD
 	checkSession(callback? : Function) {
 		this.handleResponse(this.get("session"), callback);
 	}
@@ -66,38 +71,92 @@ export class ApiService {
 	}
 
 	logout (callback? : Function) {
+=======
+	
+	createSession (identifier : string, password : string, callback? : Function) {
+		this.handleResponse (this.post ("session", {
+			identifier: identifier,
+			password: password
+		}), callback);
+	}
+	
+	deleteSession (callback? : Function) {
+>>>>>>> dev
 		this.handleResponse (this.delete ("session"), callback);
 	}
 	
 	//user
+<<<<<<< HEAD
 	registerUser (user: User, callback? : Function) : void {
 		this.handleResponse(this.post("user", user), callback);
+=======
+	
+	createUser (firstName : String, lastName : string, email : string, username : string, password : string, callback? : Function) {
+		this.handleResponse (this.post ("user", {
+			firstName: firstName,
+			lastName: lastName,
+			email: email,
+			username: username,
+			password: password
+		}), callback);
+	}
+	
+	getUsers (callback? : Function) : void {
+		this.handleResponse (this.get ("user"), callback);
+	}
+	
+	getUser (userId : number, callback? : Function) : void {
+		this.handleResponse (this.get ("user/" + userId.toString ()), callback);
+	}
+	
+	updateUser (user : User, callback? : Function) : void {
+		this.handleResponse (this.put ("user/" + user.id.toString (), user), callback);
+>>>>>>> dev
 	}
 	
 	//post
+	
+	createPost (body : string, images : string [], callback? : Function) : void {
+		this.handleResponse (this.post ("post", {
+			body: body,
+			images: images
+		}), callback);
+	}
 	
 	getPost (postId : number, callback? : Function) : void {
 		this.handleResponse (this.get ("post/" + postId.toString ()), callback);
 	}
 	
+	getPosts (page : number, callback? : Function) : void {
+		this.handleResponse (this.get ("post?page=" + page.toString ()), callback);
+	}
+	
+	getNewPosts (lastPostId : number, callback? : Function) : void {
+		this.handleResponse (this.get ("post?lastPostId=" + lastPostId.toString ()), callback);
+	}
+	
+	getUserPosts (userId : number, page : number, callback? : Function) : void {
+		this.handleResponse (this.get ("post?userId=" + userId.toString () + "&page=" + page.toString ()), callback);
+	}
+	
 	//comment
 	
-	postComment (postId : number, body : string, callback? : Function) : void {
+	createComment (postId : number, body : string, callback? : Function) : void {
 		this.handleResponse (this.post ("comment", {
-			id: postId,
+			postId: postId,
 			body: body
 		}), callback);
 	}
 	
 	//like
 	
-	likePost (postId : number, callback? : Function) : void {
+	createLike (postId : number, callback? : Function) : void {
 		this.handleResponse (this.post ("like/", {
 			postId: postId
 		}), callback);
 	}
 	
-	unlikePost (likeId : number, callback? : Function) {
-		this.handleResponse (this.delete ("like/" + likeId), callback);
+	deleteLike (likeId : number, callback? : Function) {
+		this.handleResponse (this.delete ("like/" + likeId.toString ()), callback);
 	}
 }

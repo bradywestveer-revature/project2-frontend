@@ -1,19 +1,11 @@
-<div class = "postsContainer flexColumn">
-	<app-user></app-user>
+<div class = "listContainer flexColumn">
+	<app-user [user] = "user"></app-user>
 	
 	<div class = "email flex">
 		<p class = "mediumFont">✉</p>
 		
-		<p class = "mediumFont">{{ email }}</p>
+		<p class = "mediumFont">{{ user.email }}</p>
 	</div>
 	
-	<app-create-post></app-create-post>
-	
-	<app-post></app-post>
-	
-	<app-post></app-post>
-	
-	<app-post></app-post>
-	
-	<app-post></app-post>
+	<app-posts [posts] = "posts" (scrollBottom) = "getPosts ();" style = "padding-top: 0;"></app-posts>
 </div>

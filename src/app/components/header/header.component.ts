@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
 	constructor (public dataService : DataService, private apiService : ApiService) {}
 	
 	logout () {
-		this.apiService.logout ();
+		this.apiService.deleteSession ();
 	}
 	
 	ngOnInit () : void {}
