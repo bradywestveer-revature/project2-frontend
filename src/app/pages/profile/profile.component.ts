@@ -15,13 +15,13 @@ import { DataService } from "src/app/services/data/data.service";
 })
 export class ProfileComponent implements OnInit {
 	user: User = <User>{};
-
-	currentPage: number = 1;
-
+	
 	showEdit: boolean = false;
-
+	
+	currentPage: number = 1;
+	
 	waitingForPosts: boolean = false;
-
+	
 	// posts : Post [] = [];
 	//todo
 	posts: Post[] = [
@@ -70,7 +70,7 @@ export class ProfileComponent implements OnInit {
 
 		//todo if there's an error, we can never get more posts
 	}
-
+	
 	//todo remove async, it's for testing
 	async ngOnInit (): Promise<any> {
 		this.router.params.subscribe (paramaters => {

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { User } from "src/app/models/User";
 
 @Component ({
@@ -10,7 +11,15 @@ export class UserComponent implements OnInit {
 	@Input ()
 		user : User = <User> {};
 	
-	constructor () {}
+	constructor (private router : Router) {}
+	
+	async navigate () : Promise <any> {
+		//todo slow
+		
+		await this.router.navigateByUrl ("/", { skipLocationChange: true });
+
+		this.router.navigate (["@" + this.user.username]);
+	}
 	
 	ngOnInit () : void {}
 }

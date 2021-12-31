@@ -5,6 +5,7 @@
 	justify-content: flex-start;
 	background: rgba(0, 0, 0, .3);
 	box-sizing: border-box;
+	border-radius: 4px;
 }
 
 .profileInfoContainer {
