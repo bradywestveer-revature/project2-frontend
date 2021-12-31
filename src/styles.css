@@ -36,6 +36,7 @@ button, input, textarea {
 	outline: 0;
 	border: 0;
 	padding: 10px;
+	box-sizing: border-box;
 	color: white;
 	background: rgba(0, 0, 0, .3);
 }

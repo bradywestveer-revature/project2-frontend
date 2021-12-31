@@ -73,7 +73,7 @@ export class ProfileComponent implements OnInit {
 		this.passwordInput = "";
 	}
 	
-	updateUser () : void {
+	editProfile () : void {
 		this.apiService.updateUser (<User> {
 			firstName: this.firstNameInput,
 			lastName: this.lastNameInput,

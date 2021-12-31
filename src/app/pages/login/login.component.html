@@ -1,8 +1,18 @@
-<form class="loginContainer" (submit)="loginUser()">
-    <table>
-    <tr><td [ngClass]="errorTextClass" *ngIf="errMessage">{{errMessage}}</td></tr>    
-    <tr><td><input type="text" [(ngModel)]="usernameInput" placeholder="Username or E-Mail" name="username"></td><td><img class="errorImg" src="assets/fire_blue.png" *ngIf="usernameErr"/></td></tr>    
-    <tr><td><input type="password" [(ngModel)]="passwordInput" placeholder="Password" name="password"></td><td><img class="errorImg" src="assets/fire_blue.png" *ngIf="passErr"/></td></tr>
-    <tr><div class="flexColumn"><button class="button mediumFont">Login</button></div></tr>
-    </table>
-</form>
+<div class = "loginContainer flexColumn">
+	<p *ngIf = "errMessage" [ngClass] = "errorTextClass">{{ errMessage }}</p>
+	
+	<input [(ngModel)] = "identifierInput" class = "mediumFont" placeholder = "Username or email" />
+	
+	<input [(ngModel)] = "passwordInput" class = "mediumFont" type = "password" placeholder = "Password" />
+	
+	<button (click) = "loginUser ();" class = "mediumFont">Login</button>
+</div>
+
+<!-- <form class="loginContainer" (submit)="loginUser()">
+	<table>
+	<tr><td [ngClass]="errorTextClass" *ngIf="errMessage">{{errMessage}}</td></tr>    
+	<tr><td><input type="text" [(ngModel)]="usernameInput" placeholder="Username or E-Mail" name="username"></td><td><img class="errorImg" src="assets/fire_blue.png" *ngIf="usernameErr"/></td></tr>    
+	<tr><td><input type="password" [(ngModel)]="passwordInput" placeholder="Password" name="password"></td><td><img class="errorImg" src="assets/fire_blue.png" *ngIf="passErr"/></td></tr>
+	<tr><div class="flexColumn"><button class="button mediumFont">Login</button></div></tr>
+	</table>
+</form> -->

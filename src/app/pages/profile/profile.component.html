@@ -3,27 +3,27 @@
 		<img class = "profileImage" src = "{{ user.profileImageUrl }}">
 		
 		<div *ngIf = "!showEditControls" class = "profileInfoContainer flexColumn">
-			<p class = "smallFont">{{ user.firstName }} {{ user.lastName }}</p>
-			<p class = "usernameText extraSmallFont">@{{ user.username }}</p>
-			<p class = "smallFont">✉ {{ user.email }}</p>
+			<p class = "mediumFont">{{ user.firstName }} {{ user.lastName }}</p>
+			<p class = "usernameText smallFont">@{{ user.username }}</p>
+			<p class = "mediumFont">✉ {{ user.email }}</p>
 			
-			<button *ngIf = "dataService.user.username === user.username" (click) = "showEditControls = true;">Edit Profile</button>
+			<button *ngIf = "dataService.user.username === user.username" (click) = "showEditControls = true" class = "profileEditButton">Edit Profile</button>
 		</div>
 		
 		<div *ngIf = "showEditControls" class = "profileInfoContainer flexColumn">
-			<input [(ngModel)] = "firstNameInput" type = "text" placeholder = "First Name" />
-			<input [(ngModel)] = "lastNameInput" type = "text" placeholder = "Last Name" />
-			<input [(ngModel)] = "emailInput" type = "email" placeholder = "Email" />
-			<input [(ngModel)] = "usernameInput" type = "text" placeholder = "Username" />
-			<input [(ngModel)] = "passwordInput" type = "password" placeholder = "New Password" />
+			<input [(ngModel)] = "firstNameInput" class = "mediumFont" type = "text" placeholder = "First Name" />
+			<input [(ngModel)] = "lastNameInput" class = "mediumFont" type = "text" placeholder = "Last Name" />
+			<input [(ngModel)] = "emailInput" class = "mediumFont" type = "email" placeholder = "Email" />
+			<input [(ngModel)] = "usernameInput" class = "mediumFont" type = "text" placeholder = "Username" />
+			<input [(ngModel)] = "passwordInput" class = "mediumFont" type = "password" placeholder = "New Password" />
 			
-			<div class = "profileEditButtons flex">
-				<button (click) = "showEditControls = false; clearEditInputs ();" class = "profileEditButton">✕</button>
+			<div class = "profileEditSubmitButtons flex">
+				<button (click) = "showEditControls = false; clearEditInputs ();" class = "profileEditSubmitButton">✕</button>
 				
-				<button class = "profileEditButton">✓</button>
+				<button (click) = "editProfile ();" class = "profileEditSubmitButton">✓</button>
 			</div>
 		</div>
 	</div>
 	
-	<app-posts [posts] = "posts" (scrollBottom) = "getPosts ();" style = "padding: 0 0 10px; overflow: unset; height: unset;"></app-posts>
+	<app-posts [posts] = "posts" (scrollBottom) = "getPosts ();"></app-posts>
 </div>
