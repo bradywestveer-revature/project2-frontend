@@ -77,10 +77,6 @@ export class ApiService {
 		this.handleResponse (this.get ("user"), callback);
 	}
 	
-	getUser (userId : number, callback? : Function) : void {
-		this.handleResponse (this.get ("user/" + userId.toString ()), callback);
-	}
-	
 	updateUser (user : User, callback? : Function) : void {
 		this.handleResponse (this.put ("user/" + user.id.toString (), user), callback);
 	}
