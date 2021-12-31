@@ -20,7 +20,8 @@
 }
 
 .registerContainer > input, .registerContainer > button {
-    width: 50%;
+    width: 90vw;
+    max-width: 320px;
 }
 
 .errorText {
