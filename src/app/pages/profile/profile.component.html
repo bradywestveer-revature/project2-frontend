@@ -1,30 +1,29 @@
-<div class="listContainer flexColumn">
-    
-    <div *ngIf="!showEdit" class="flexColumn userText userContainer">
-        <img src="{{ user.profileImageUrl }}">
-        <p class="inputText">{{user.firstName}}</p>
-        <p class="inputText">{{user.lastName}}</p>
-        <p class="inputText">@{{user.username}}</p>
-        <p class="inputText">{{user.email}}</p>
-    </div>
-
-    <div *ngIf="showEdit" class="flexColumn userText userContainer">
-        <img src="{{ user.profileImageUrl }}">
-        <input class="inputText" type="text" placeholder={{user.firstName}} >
-        <input class="inputText" type="text" placeholder={{user.lastName}} >
-        <input class="inputText" type="text" placeholder={{user.username}} >
-        <input class="inputText" type="email" placeholder={{user.email}}>
-        <input class="inputText" type="password" placeholder="New Password" > 
-
-        <div *ngIf="showEdit" class="buttons">
-            <button>Submit</button>
-            <button (click)="showEdit = !showEdit">Cancel</button>
-        </div>
-    </div>
-
-    <div>
-        <button [hidden]="showEdit" (click)="showEdit = !showEdit">Edit Profile</button>
-    </div>
-
-    <app-posts [posts]="posts" (scrollBottom)="getPosts ();" style="padding-top: 0;"></app-posts>
+<div class = "listContainer flexColumn" style = "padding-bottom: 0; overflow-y: scroll;">
+	<div class = "profileContainer flex">
+		<img class = "profileImage" src = "{{ user.profileImageUrl }}">
+		
+		<div *ngIf = "!showEdit" class = "profileInfoContainer flexColumn">
+			<p class = "profileEditControl smallFont">{{ user.firstName }} {{ user.lastName }}</p>
+			<p class = "profileEditControl usernameText extraSmallFont">@{{ user.username }}</p>
+			<p class = "profileEditControl smallFont">✉ {{ user.email }}</p>
+			
+			<button *ngIf = "dataService.user.username === user.username" (click) = "showEdit = !showEdit">Edit Profile</button>
+		</div>
+		
+		<div *ngIf = "showEdit" class = "profileInfoContainer flexColumn">
+			<input class = "profileEditControl" type = "text" placeholder = {{user.firstName}} />
+			<input class = "profileEditControl" type = "text" placeholder = {{user.lastName}} />
+			<input class = "profileEditControl" type = "text" placeholder = {{user.username}} />
+			<input class = "profileEditControl" type = "email" placeholder = {{user.email}} />
+			<input class = "profileEditControl" type = "password" placeholder = "New Password" />
+			
+			<div class = "profileEditButtons flex">
+				<button (click) = "showEdit = !showEdit" class = "profileEditButton">✕</button>
+				
+				<button class = "profileEditButton">✓</button>
+			</div>
+		</div>
+	</div>
+	
+	<app-posts [posts] = "posts" (scrollBottom) = "getPosts ();" style = "padding: 0 0 10px; overflow: unset;"></app-posts>
 </div>

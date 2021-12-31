@@ -1,33 +1,32 @@
-.email {
+.profileContainer {
+	width: 550px;
+	gap: 15px;
+	padding: 15px;
+	justify-content: flex-start;
+	background: rgba(0, 0, 0, .3);
+	box-sizing: border-box;
+}
+
+.profileInfoContainer {
 	gap: 5px;
+	align-items: flex-start;
 }
 
-.buttons{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-
-input{
-    background-color: black;
-    background: rgba(0, 0, 0, .5);
-	padding: 10px;
-}
-
-.userContainer {
-	justify-content: space-between;
-	gap: 7px;
-	outline: none;
-}
-
-.userContainer > img {
+.profileImage {
 	object-fit: contain;
-	height: 150px;
+	height: 100px;
 	border-radius: 50%;
 }
 
-.userText {
-	gap: 3px;
+.profileEditControl {
+	
 }
 
+.profileEditButtons {
+	width: 100%;
+	gap: 5px;
+}
 
+.profileEditButton {
+	flex-grow: 1;
+}

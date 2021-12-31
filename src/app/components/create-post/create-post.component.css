@@ -12,9 +12,7 @@
 .createPostInput {
 	width: 100%;
 	height: 100px;
-	background: rgba(0, 0, 0, .3);
 	font-family: Arial;
-	padding: 10px;
 	box-sizing: border-box;
 	resize: none;
 }

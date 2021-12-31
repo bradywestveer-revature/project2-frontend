@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { firstValueFrom } from 'rxjs';
-import { Post } from 'src/app/models/Post';
-import { User } from 'src/app/models/User';
-import { ApiService } from 'src/app/services/api/api.service';
-import { DataService } from 'src/app/services/data/data.service';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { Post } from "src/app/models/Post";
+import { User } from "src/app/models/User";
+import { ApiService } from "src/app/services/api/api.service";
+import { DataService } from "src/app/services/data/data.service";
 
-@Component({
-	selector: 'app-profile',
-	templateUrl: './profile.component.html',
-	styleUrls: ['./profile.component.css'],
+@Component ({
+	selector: "app-profile",
+	templateUrl: "./profile.component.html",
+	styleUrls: ["./profile.component.css"],
 	host: {
 		class: "page flex"
 	}
@@ -54,14 +53,14 @@ export class ProfileComponent implements OnInit {
 		}
 	];
 
-	constructor(private router: ActivatedRoute, public dataService: DataService, private apiService: ApiService) { }
+	constructor (private router: ActivatedRoute, public dataService: DataService, private apiService: ApiService) { }
 
-	getPosts(): void {
+	getPosts () : void {
 		if (!this.waitingForPosts) {
 			this.waitingForPosts = true;
 
-			this.apiService.getPosts(this.currentPage, (data: any): void => {
-				this.posts = data.data.concat(this.posts);
+			this.apiService.getPosts (this.currentPage, (data: any): void => {
+				this.posts = data.data.concat (this.posts);
 
 				this.currentPage += 1;
 
@@ -72,37 +71,34 @@ export class ProfileComponent implements OnInit {
 		//todo if there's an error, we can never get more posts
 	}
 
-	async ngOnInit(): Promise<any> {
-		const paramaters = await firstValueFrom(this.router.params);
+	//todo remove async, it's for testing
+	async ngOnInit (): Promise<any> {
+		this.router.params.subscribe (paramaters => {
+			//todo testing
+			for (let i = 0; i < Object.keys (this.dataService.users).length; i++) {
+				if (this.dataService.users [Object.keys (this.dataService.users) [i]].username === paramaters ["username"]) {
+					this.user = this.dataService.users [Object.keys (this.dataService.users) [i]];
 
-			//todo slow
-			for (let i = 0; i < Object.keys(this.dataService.users).length; i++) {
-				//if user's username matches username from URL
-				
-				if (this.dataService.users[Object.keys(this.dataService.users)[i]].username === paramaters["username"]) {
-					this.user = this.dataService.users[Object.keys(this.dataService.users)[i]];
-					
 					break;
 				}
 			}
-		this.apiService.getUsers(async (data: any): Promise<any> => {
-			this.dataService.users = data.data;
+			//end testing
 
-			const paramaters = await firstValueFrom(this.router.params);
+			this.apiService.getUsers (async (data: any) : Promise <any> => {
+				this.dataService.users = data.data;
 
-			//todo slow
-			for (let i = 0; i < Object.keys(this.dataService.users).length; i++) {
-				//if user's username matches username from URL
-				
-				if (this.dataService.users[Object.keys(this.dataService.users)[i]].username === paramaters["username"]) {
-					this.user = this.dataService.users[Object.keys(this.dataService.users)[i]];
-					
-					break;
+				//todo slow
+				for (let i = 0; i < Object.keys (this.dataService.users).length; i++) {
+					//if user's username matches username from URL
+					if (this.dataService.users [Object.keys (this.dataService.users) [i]].username === paramaters ["username"]) {
+						this.user = this.dataService.users [Object.keys (this.dataService.users) [i]];
+
+						break;
+					}
 				}
-			}
 
-			this.getPosts();
+				this.getPosts ();
+			});
 		});
 	}
-
 }

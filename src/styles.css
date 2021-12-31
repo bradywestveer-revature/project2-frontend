@@ -35,12 +35,12 @@ a {
 button, input, textarea {
 	outline: 0;
 	border: 0;
+	padding: 10px;
 	color: white;
+	background: rgba(0, 0, 0, .3);
 }
 
 button {
-	background: rgba(0, 0, 0, .3);
-	padding: 10px;
 	cursor: pointer;
 }
 
@@ -95,4 +95,8 @@ button {
 	gap: 10px;
 	box-sizing: border-box;
 	overflow-y: scroll;
+}
+
+.usernameText {
+	color: #BBB;
 }
