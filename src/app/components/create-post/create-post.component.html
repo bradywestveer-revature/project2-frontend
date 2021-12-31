@@ -4,7 +4,7 @@
 	<textarea [(ngModel)] = "postInput" class = "createPostInput mediumFont" placeholder = "Write a post..."></textarea>
 	
 	<div class = "createPostPreviewImages flex" *ngIf = "previewImageUrls.length > 0">
-		<div *ngFor = "let url of previewImageUrls; index as i" class = "previewImageContainer">
+		<div *ngFor = "let url of previewImageUrls; index as i" class = "previewImageContainer flex">
 			<img class = "previewImage" [src] = "url" />
 			
 			<button (click) = "removePreviewImage (i)" class = "removePreviewImageButton extraSmallFont">✕</button>
