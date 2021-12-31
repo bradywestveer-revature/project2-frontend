@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { User } from "src/app/models/User";
 
-@Injectable({
-	providedIn: 'root'
+@Injectable ({
+	providedIn: "root"
 })
 export class DataService {
 	public user : User = <User> {

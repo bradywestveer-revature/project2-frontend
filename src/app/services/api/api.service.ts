@@ -1,11 +1,11 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { firstValueFrom, Observable } from 'rxjs';
-import { User } from 'src/app/models/User';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { firstValueFrom, Observable } from "rxjs";
+import { User } from "src/app/models/User";
 
 @Injectable ({
-	providedIn: 'root'
+	providedIn: "root"
 })
 export class ApiService {
 	baseUrl : string = "http://localhost/";

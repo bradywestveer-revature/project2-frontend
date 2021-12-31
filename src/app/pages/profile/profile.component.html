@@ -2,23 +2,23 @@
 	<div class = "profileContainer flex">
 		<img class = "profileImage" src = "{{ user.profileImageUrl }}">
 		
-		<div *ngIf = "!showEdit" class = "profileInfoContainer flexColumn">
-			<p class = "profileEditControl smallFont">{{ user.firstName }} {{ user.lastName }}</p>
-			<p class = "profileEditControl usernameText extraSmallFont">@{{ user.username }}</p>
-			<p class = "profileEditControl smallFont">✉ {{ user.email }}</p>
+		<div *ngIf = "!showEditControls" class = "profileInfoContainer flexColumn">
+			<p class = "smallFont">{{ user.firstName }} {{ user.lastName }}</p>
+			<p class = "usernameText extraSmallFont">@{{ user.username }}</p>
+			<p class = "smallFont">✉ {{ user.email }}</p>
 			
-			<button *ngIf = "dataService.user.username === user.username" (click) = "showEdit = !showEdit">Edit Profile</button>
+			<button *ngIf = "dataService.user.username === user.username" (click) = "showEditControls = true;">Edit Profile</button>
 		</div>
 		
-		<div *ngIf = "showEdit" class = "profileInfoContainer flexColumn">
-			<input class = "profileEditControl" type = "text" placeholder = {{user.firstName}} />
-			<input class = "profileEditControl" type = "text" placeholder = {{user.lastName}} />
-			<input class = "profileEditControl" type = "text" placeholder = {{user.username}} />
-			<input class = "profileEditControl" type = "email" placeholder = {{user.email}} />
-			<input class = "profileEditControl" type = "password" placeholder = "New Password" />
+		<div *ngIf = "showEditControls" class = "profileInfoContainer flexColumn">
+			<input [(ngModel)] = "firstNameInput" type = "text" placeholder = "First Name" />
+			<input [(ngModel)] = "lastNameInput" type = "text" placeholder = "Last Name" />
+			<input [(ngModel)] = "emailInput" type = "email" placeholder = "Email" />
+			<input [(ngModel)] = "usernameInput" type = "text" placeholder = "Username" />
+			<input [(ngModel)] = "passwordInput" type = "password" placeholder = "New Password" />
 			
 			<div class = "profileEditButtons flex">
-				<button (click) = "showEdit = !showEdit" class = "profileEditButton">✕</button>
+				<button (click) = "showEditControls = false; clearEditInputs ();" class = "profileEditButton">✕</button>
 				
 				<button class = "profileEditButton">✓</button>
 			</div>

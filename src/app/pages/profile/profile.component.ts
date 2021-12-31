@@ -16,7 +16,17 @@ import { DataService } from "src/app/services/data/data.service";
 export class ProfileComponent implements OnInit {
 	user: User = <User>{};
 	
-	showEdit: boolean = false;
+	showEditControls: boolean = false;
+
+	firstNameInput : string = "";
+
+	lastNameInput : string = "";
+
+	emailInput : string = "";
+
+	usernameInput : string = "";
+
+	passwordInput : string = "";
 	
 	currentPage: number = 1;
 	
@@ -54,7 +64,27 @@ export class ProfileComponent implements OnInit {
 	];
 
 	constructor (private router: ActivatedRoute, public dataService: DataService, private apiService: ApiService) { }
-
+	
+	clearEditInputs () : void {
+		this.firstNameInput = "";
+		this.lastNameInput = "";
+		this.emailInput = "";
+		this.usernameInput = "";
+		this.passwordInput = "";
+	}
+	
+	updateUser () : void {
+		this.apiService.updateUser (<User> {
+			firstName: this.firstNameInput,
+			lastName: this.lastNameInput,
+			email: this.emailInput,
+			username: this.usernameInput,
+			password: this.passwordInput
+		}, (data : any) : void => {
+			this.user = <User> data;
+		});
+	}
+	
 	getPosts () : void {
 		if (!this.waitingForPosts) {
 			this.waitingForPosts = true;
