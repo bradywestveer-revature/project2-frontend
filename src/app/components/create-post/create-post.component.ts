@@ -1,17 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Post } from 'src/app/models/Post';
-import { ApiService } from 'src/app/services/api/api.service';
-import { DataService } from 'src/app/services/data/data.service';
+import { Component, Input, OnInit } from "@angular/core";
+import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
+import { Post } from "src/app/models/Post";
+import { ApiService } from "src/app/services/api/api.service";
+import { DataService } from "src/app/services/data/data.service";
 
-@Component({
-	selector: 'app-create-post',
-	templateUrl: './create-post.component.html',
-	styleUrls: ['./create-post.component.css']
+@Component ({
+	selector: "app-create-post",
+	templateUrl: "./create-post.component.html",
+	styleUrls: ["./create-post.component.css"]
 })
 export class CreatePostComponent implements OnInit {
 	@Input ()
-	posts : Post [] = [];
+		posts : Post [] = [];
 	
 	postInput : string = "";
 	
@@ -48,6 +48,7 @@ export class CreatePostComponent implements OnInit {
 			this.postInput = "";
 			
 			this.images = [];
+
 			this.previewImageUrls = [];
 			
 			this.apiService.getNewPosts (this.posts [0].id, (data : any) : void => {

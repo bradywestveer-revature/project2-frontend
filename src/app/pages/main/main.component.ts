@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Post } from 'src/app/models/Post';
-import { ApiService } from 'src/app/services/api/api.service';
-import { DataService } from 'src/app/services/data/data.service';
+import { Component, OnInit } from "@angular/core";
+import { Post } from "src/app/models/Post";
+import { ApiService } from "src/app/services/api/api.service";
+import { DataService } from "src/app/services/data/data.service";
 
-@Component({
-	selector: 'app-main',
-	templateUrl: './main.component.html',
-	styleUrls: ['./main.component.css'],
+@Component ({
+	selector: "app-main",
+	templateUrl: "./main.component.html",
+	styleUrls: ["./main.component.css"],
 	host: {
 		class: "page flexColumn"
 	}
@@ -26,7 +26,7 @@ export class MainComponent implements OnInit {
 			
 			body: "I'm Kevin. I am currently logged in. I already liked this post. Here are some images.",
 			
-			imageUrls : [
+			imageUrls: [
 				"https://cdn.britannica.com/42/91642-050-332E5C66/Keukenhof-Gardens-Lisse-Netherlands.jpg",
 				"https://media.istockphoto.com/photos/blue-ridge-parkway-scenic-landscape-appalachian-mountains-ridges-picture-id154232673?b=1&k=20&m=154232673&s=170667a&w=0&h=rHdSC9KKqkG8q-KKWfiqMEalaQkleMZ3zxaCYE8Eck8=",
 				"https://www.gardeningknowhow.com/wp-content/uploads/2007/03/flowers-1.jpg",
@@ -53,7 +53,7 @@ export class MainComponent implements OnInit {
 			
 			body: "I am David. Here are some photos. No one has liked this post yet.",
 			
-			imageUrls : [
+			imageUrls: [
 				"https://s.abcnews.com/images/International/MChanga_1624536553868_hpMain_4x5_992.jpg",
 				"https://d.newsweek.com/en/full/1787915/elephant.jpg?w=1600&h=900&q=88&f=4271739d91dd0207cebe547932c3566f"
 			],
@@ -119,7 +119,7 @@ export class MainComponent implements OnInit {
 			
 			body: "This is Brady. I attached an image of my dogs. I liked this post, but no else else has yet.",
 			
-			imageUrls : [
+			imageUrls: [
 				"https://cdn.discordapp.com/attachments/796812457188130816/925867939679318158/dogs.jpg"
 			],
 			

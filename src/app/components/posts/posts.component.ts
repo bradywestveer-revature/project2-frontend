@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Post } from 'src/app/models/Post';
-import { DataService } from 'src/app/services/data/data.service';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Post } from "src/app/models/Post";
+import { DataService } from "src/app/services/data/data.service";
 
 @Component ({
-	selector: 'app-posts',
-	templateUrl: './posts.component.html',
-	styleUrls: ['./posts.component.css'],
+	selector: "app-posts",
+	templateUrl: "./posts.component.html",
+	styleUrls: ["./posts.component.css"],
 	host: {
 		class: "listContainer flexColumn",
 		"(scroll)": "scroll ($event);"
@@ -13,10 +13,10 @@ import { DataService } from 'src/app/services/data/data.service';
 })
 export class PostsComponent implements OnInit {
 	@Input ()
-	posts : Post [] = [];
+		posts : Post [] = [];
 	
 	@Output ()
-	scrollBottom : EventEmitter <string> = new EventEmitter ();
+		scrollBottom : EventEmitter <string> = new EventEmitter ();
 	
 	constructor (public dataService : DataService) {}
 	

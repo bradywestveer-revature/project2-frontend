@@ -9,8 +9,8 @@ describe ("CommentComponent", () => {
 	beforeEach (async () => {
 		await TestBed.configureTestingModule ({
 			declarations: [CommentComponent]
-		}).
-			compileComponents ();
+		})
+			.compileComponents ();
 	});
 
 	beforeEach (() => {

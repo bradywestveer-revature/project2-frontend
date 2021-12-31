@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes, UrlSegment } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
-import { MainComponent } from './pages/main/main.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { RegisterComponent } from './pages/register/register.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes, UrlSegment } from "@angular/router";
+import { LoginComponent } from "./pages/login/login.component";
+import { MainComponent } from "./pages/main/main.component";
+import { ProfileComponent } from "./pages/profile/profile.component";
+import { RegisterComponent } from "./pages/register/register.component";
 
 const routes: Routes = [
 	{
@@ -44,8 +44,8 @@ const routes: Routes = [
 	}
 ];
 
-@NgModule({
-	imports: [RouterModule.forRoot(routes)],
+@NgModule ({
+	imports: [RouterModule.forRoot (routes)],
 	exports: [RouterModule]
 })
 export class AppRoutingModule { }

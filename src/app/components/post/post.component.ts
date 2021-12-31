@@ -1,20 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Post } from 'src/app/models/Post';
-import { User } from 'src/app/models/User';
-import { ApiService } from 'src/app/services/api/api.service';
-import { DataService } from 'src/app/services/data/data.service';
+import { Component, Input, OnInit } from "@angular/core";
+import { Post } from "src/app/models/Post";
+import { User } from "src/app/models/User";
+import { ApiService } from "src/app/services/api/api.service";
+import { DataService } from "src/app/services/data/data.service";
 
-@Component({
-	selector: 'app-post',
-	templateUrl: './post.component.html',
-	styleUrls: ['./post.component.css']
+@Component ({
+	selector: "app-post",
+	templateUrl: "./post.component.html",
+	styleUrls: ["./post.component.css"]
 })
 export class PostComponent implements OnInit {
 	@Input ()
-	user : User = <User> {};
+		user : User = <User> {};
 	
 	@Input ()
-	post : Post = <Post> {};
+		post : Post = <Post> {};
 	
 	currentImageIndex : number = 0;
 	
