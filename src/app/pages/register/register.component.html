@@ -1,4 +1,22 @@
-<form class="registerContainer" (submit)="registerUser()">
+<div class = "registerContainer flexColumn">
+    <p *ngIf = "errMessage" [ngClass] = "errorTextClass">{{ errMessage }}</p>
+    
+    <input [(ngModel)] = "firstNameInput" class = "mediumFont" placeholder = "First Name" />
+    
+    <input [(ngModel)] = "lastNameInput" class = "mediumFont" placeholder = "Last Name" />
+    
+    <input [(ngModel)] = "emailInput" class = "mediumFont" type = "email" placeholder = "Email" />
+    
+    <input [(ngModel)] = "usernameInput" class = "mediumFont" placeholder = "Username" />
+    
+    <input [(ngModel)] = "passwordInput" class = "mediumFont" type = "password" placeholder = "Password" />
+    
+    <input [(ngModel)] = "confirmPasswordInput" class = "mediumFont" type = "password" placeholder = "Confirm Password" />
+    
+    <button (click) = "registerUser ();" class = "mediumFont">Register</button>
+</div>
+
+<!-- <form class="registerContainer" (submit)="registerUser()">
     <table>
     <tr><td [ngClass]="errorTextClass" *ngIf="errMessage">{{errMessage}}</td></tr>
     <tr><td><input type="text" [(ngModel)]="firstnameInput" placeholder="First name" name="firstname"></td><td><img class="errorImg" src="assets/fire_blue.png" *ngIf="firstnameErr"/></td></tr>
@@ -9,4 +27,4 @@
     <tr><td><input type="password" [(ngModel)]="confirmpassInput" placeholder="Confirm Password" name="confirm-password"></td><td><img class="errorImg" src="assets/fire_blue.png" *ngIf="passErr"/></td></tr>
     <tr><div class="flexColumn"><button class="button mediumFont">Register</button></div></tr>
     </table>
-</form>
+</form> -->

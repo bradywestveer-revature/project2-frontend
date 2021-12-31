@@ -20,9 +20,9 @@ export class LoginComponent implements OnInit {
 
 	passwordInput : string = "";
 
-	usernameErr : boolean = false;
+	// usernameErr : boolean = false;
 
-	passErr : boolean = false;
+	// passErr : boolean = false;
 
 	// user : User = <User> {
 	// 	email: "",
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 	// };
 	user : User = <User> {};
   
-	constructor (private apiServ: ApiService, private dataServ: DataService) { }
+	constructor (private apiServ: ApiService, private dataServ: DataService) {}
 
 	ngOnInit (): void {
 		// this.errorTextClass = "errorText login-white";
@@ -92,7 +92,7 @@ export class LoginComponent implements OnInit {
 
 			this.errMessage = "Invalid Username.";
 
-			this.usernameErr = true;
+			// this.usernameErr = true;
 
 			return;
 		}
@@ -102,7 +102,7 @@ export class LoginComponent implements OnInit {
 
 			this.errMessage = "Invalid password, must be at least 8 characters.";
 
-			this.passErr = true;
+			// this.passErr = true;
 
 			return;
 		}
@@ -111,9 +111,9 @@ export class LoginComponent implements OnInit {
 
 		this.errMessage = "Please Login";
 
-		this.usernameErr = false;
+		// this.usernameErr = false;
 
-		this.passErr = false;
+		// this.passErr = false;
 
 		// if (this.isValidEmail (this.identifierInput)) { // the username is an email so fill in user.email
 		// 	this.user.email = this.identifierInput;

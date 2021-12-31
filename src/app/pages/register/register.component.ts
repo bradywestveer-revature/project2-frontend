@@ -1,134 +1,155 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserComponent } from 'src/app/components/user/user.component';
-import { User } from 'src/app/models/User';
-import { ApiService } from 'src/app/services/api/api.service';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { UserComponent } from "src/app/components/user/user.component";
+import { User } from "src/app/models/User";
+import { ApiService } from "src/app/services/api/api.service";
 
-@Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
-  host: {
-    class: "page flex"
-  }
+@Component ({
+	selector: "app-register",
+	templateUrl: "./register.component.html",
+	styleUrls: ["./register.component.css"],
+	host: {
+		class: "page flex"
+	}
 })
 export class RegisterComponent implements OnInit {
+	errorTextClass: string = "errorText";
 
-  errorTextClass: string = "errorText";
-  errMessage: string = "";
-  firstnameInput: string ="";
-  lastnameInput : string  ="";
-  emailInput: string = "";
-  usernameInput : string = "";
-  passwordInput : string = "";
-  confirmpassInput : string = "";
-  firstnameErr: boolean = false;
-  lastnameErr: boolean = false;
-  emailErr: boolean = false;
-  usernameErr: boolean = false;
-  passErr: boolean = false;
+	errMessage: string = "";
 
-  user : User = <User> {
-    firstName: "",
-    lastName: "",
-    email: "",
-    username: "",    
-    profileImageUrl: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-  };
+	firstNameInput: string = "";
 
-  constructor(private apiServ: ApiService, private router : Router) { }
+	lastNameInput : string = "";
 
-  ngOnInit(): void {
-  }
+	emailInput: string = "";
 
-  isValidEmail(email:string) : boolean
-  {
-      let success : boolean;
+	usernameInput : string = "";
 
-      let regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-      success = regexp.test(email);
-      
-      return success;
-  }
+	passwordInput : string = "";
 
-  registerUserCallback(data: any){
-    console.log("registerUserCallback()");
-    console.log(data.message);
-    this.errorTextClass = "errorText reg-green";
-    this.errMessage = String(data.message);
-    //console.log(this.errMessage);    
-    alert(data.message);
-    //this.router.navigate(data.redirect);    
-  }
+	confirmPasswordInput : string = "";
 
-  registerUser() {      
-      
-    // Field validation, lengths and make sure retyped password matches
-      this.errorTextClass = "errorText";
-      if (this.firstnameInput.length<1) {
-        this.firstnameErr = true;
-        this.errMessage = "First name can not be blank."
-        return;
-      } else {
-        this.firstnameErr = false;        
-        this.errMessage = "";
-      }
+	// firstnameErr: boolean = false;
 
-      if (this.lastnameInput.length<1) {
-        this.lastnameErr = true;
-        this.errMessage = "Last name can not be blank."
-        return;
-      } else {
-        this.lastnameErr = false;
-        this.errMessage = ""
-      }
+	// lastnameErr: boolean = false;
 
-      if (!this.isValidEmail(this.emailInput)) {
-        this.emailErr = true;
-        this.errMessage = "Invalid e-mail address."
-        return;
-      } else {
-        this.emailErr = false;
-        this.errMessage = ""
-      }
+	// emailErr: boolean = false;
 
-      if (this.usernameInput.length<1) {
-        this.usernameErr = true;
-        this.errMessage = "Username can not be blank."
-        return;
-      } else {
-        this.usernameErr = false;
-        this.errMessage = ""
-      }
+	// usernameErr: boolean = false;
 
-      if (this.passwordInput != this.confirmpassInput) {
-        this.passErr = true;
-        this.errMessage = "Passwords do not match."
-        return;
-      } else {
-        this.passErr = false;
-        this.errMessage = ""
-      }
+	// passErr: boolean = false;
+	
+	// user : User = <User> {
+	// firstName: "",
+	// lastName: "",
+	// email: "",
+	// username: "",
+	// profileImageUrl: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+	// };
 
-      if (this.passwordInput.length<8) {
-        this.passErr = true;
-        this.errMessage = "Password must be at least 8 characters."
-        return;
-      } else {
-        this.passErr = false;
-        this.errMessage = ""
-      }
-      
-      // If we got this far its safe to register our user
-      this.user.firstName = this.firstnameInput;
-      this.user.lastName = this.lastnameInput;
-      this.user.email = this.emailInput;
-      this.user.username = this.usernameInput;
-      this.user.password = this.passwordInput;            
-      this.apiServ.createUser(this.user, (data : any) : void => {
-        this.errorTextClass = "errorText reg-green";
-        this.errMessage = String(data.message);        
-        alert(data.message);
-			});
-  }
+	constructor (private apiServ: ApiService) {}
+
+	ngOnInit (): void {}
+
+	isValidEmail (email:string) : boolean {
+		let success : boolean;
+
+		let regexp = new RegExp (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+		success = regexp.test (email);
+		
+		return success;
+	}
+
+	// registerUserCallback (data: any) {
+	// 	console.log ("registerUserCallback()");
+	// 	console.log (data.message);
+	// 	this.errorTextClass = "errorText reg-green";
+	// 	this.errMessage = String (data.message);
+	// 	//console.log(this.errMessage);
+	// 	alert (data.message);
+	// 	//this.router.navigate(data.redirect);
+	// }
+
+	registerUser () {
+		// field validation, lengths and make sure retyped password matches
+		this.errorTextClass = "errorText";
+		if (this.firstNameInput.length < 1) {
+			// this.firstnameErr = true;
+			this.errMessage = "First name can not be blank.";
+			return;
+		}
+		else {
+			// this.firstnameErr = false;
+			this.errMessage = "";
+		}
+
+		if (this.lastNameInput.length < 1) {
+			// this.lastnameErr = true;
+			this.errMessage = "Last name can not be blank.";
+			return;
+		}
+		else {
+			// this.lastnameErr = false;
+			this.errMessage = "";
+		}
+
+		if (!this.isValidEmail (this.emailInput)) {
+			// this.emailErr = true;
+			this.errMessage = "Invalid e-mail address.";
+			return;
+		}
+		else {
+			// this.emailErr = false;
+			this.errMessage = "";
+		}
+
+		if (this.usernameInput.length < 1) {
+			// this.usernameErr = true;
+			this.errMessage = "Username can not be blank.";
+			return;
+		}
+		else {
+			// this.usernameErr = false;
+			this.errMessage = "";
+		}
+		if (this.passwordInput != this.confirmPasswordInput) {
+			// this.passErr = true;
+			this.errMessage = "Passwords do not match.";
+			return;
+		}
+		else {
+			// this.passErr = false;
+			this.errMessage = "";
+		}
+
+		if (this.passwordInput.length < 8) {
+			// this.passErr = true;
+			this.errMessage = "Password must be at least 8 characters.";
+			return;
+		}
+		else {
+			// this.passErr = false;
+			this.errMessage = "";
+		}
+	  
+		// if we got this far its safe to register our user
+		// this.user.firstName = this.firstNameInput;
+		// this.user.lastName = this.lastNameInput;
+		// this.user.email = this.emailInput;
+		// this.user.username = this.usernameInput;
+		// this.user.password = this.passwordInput;
+		// this.apiServ.createUser (this.user, (data : any) : void => {
+		this.apiServ.createUser (<User> {
+			firstName: this.firstNameInput,
+			lastName: this.lastNameInput,
+			email: this.emailInput,
+			username: this.usernameInput,
+			password: this.passwordInput
+		});
+		// }, (data : any) : void => {
+		// this.errorTextClass = "errorText reg-green";
+		// this.errMessage = String (data.message);
+		// alert (data.message);
+		// });
+	}
 }
