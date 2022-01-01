@@ -1,7 +1,7 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { firstValueFrom, Observable } from "rxjs";
+import { Observable } from "rxjs";
 import { User } from "src/app/models/User";
 
 @Injectable ({
@@ -13,21 +13,30 @@ export class ApiService {
 	constructor (private httpClient : HttpClient, private router : Router) {}
 	
 	async handleResponse (response : Observable <any>, callback? : Function) : Promise <any> {
-		const data : any = await firstValueFrom (response);
-		
-		if (data.success) {
-			if (typeof callback !== "undefined") {
-				await callback (data);
+		const handler = async (data : any) : Promise <any> => {
+			if (data.success) {
+				if (typeof callback !== "undefined") {
+					await callback (data);
+				}
 			}
-		}
+			
+			else {
+				alert (data.message);
+			}
+			
+			if (data.redirect !== null) {
+				this.router.navigate ([data.redirect]);
+			}
+		};
 		
-		else {
-			alert (data.message);
-		}
-		
-		if (data.redirect !== null) {
-			this.router.navigate ([data.redirect]);
-		}
+		//send data from response to handler (HttpErrorResponses keep data in error.error)
+		response.subscribe ({
+			next: handler,
+			
+			error: (error : HttpErrorResponse) : void => {
+				handler (error.error);
+			}
+		});
 	}
 	
 	get (path : string) : Observable <any> {

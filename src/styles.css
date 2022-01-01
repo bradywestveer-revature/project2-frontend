@@ -88,6 +88,31 @@ button {
 	font-size: 20px;
 }
 
+.card {
+	width: 550px;
+	max-width: 95vw;
+	padding: 15px;
+	align-items: flex-start;
+	background: rgba(0, 0, 0, .3);
+	gap: 15px;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.loginContainer {
+	gap: 3px;
+	align-items: center;
+}
+
+.loginContainer > input, .loginContainer > button {
+	width: 90vw;
+	max-width: 320px;
+}
+
+.loginContainer > a {
+	padding: 15px;
+}
+
 .listContainer {
 	padding: 10px;
 	width: 100%;

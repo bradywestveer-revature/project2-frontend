@@ -1,4 +1,4 @@
-<div class = "registerContainer flexColumn">
+<div class = "loginContainer card flexColumn">
     <p *ngIf = "errMessage" [ngClass] = "errorTextClass">{{ errMessage }}</p>
     
     <input [(ngModel)] = "firstNameInput" class = "mediumFont" placeholder = "First Name" />
@@ -14,6 +14,8 @@
     <input [(ngModel)] = "confirmPasswordInput" class = "mediumFont" type = "password" placeholder = "Confirm Password" />
     
     <button (click) = "registerUser ();" class = "mediumFont">Register</button>
+    
+    <a routerLink = "/login" class = "smallFont">Login to an existing account</a>
 </div>
 
 <!-- <form class="registerContainer" (submit)="registerUser()">

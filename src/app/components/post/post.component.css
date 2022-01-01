@@ -9,17 +9,6 @@
 	}
 }
 
-.post {
-	width: 550px;
-	max-width: 95vw;
-	padding: 15px;
-	align-items: flex-start;
-	background: rgba(0, 0, 0, .3);
-	gap: 15px;
-	border-radius: 4px;
-	box-sizing: border-box;
-}
-
 .postImages {
 	width: 100%;
 	position: relative;

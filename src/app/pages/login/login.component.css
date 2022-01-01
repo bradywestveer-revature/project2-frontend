@@ -9,21 +9,6 @@
 	box-sizing: border-box;    
 }*/
 
-.loginContainer {
-	width: 550px;
-	max-width: 95vw;
-	padding: 15px;
-	background: rgba(0, 0, 0, .3);
-	gap: 3px;
-	border-radius: 4px;
-	box-sizing: border-box;
-}
-
-.loginContainer > input, .loginContainer > button {
-	width: 90vw;
-	max-width: 320px;
-}
-
 .errorText {
 	font-size: 20px;
 	margin: 10px;
