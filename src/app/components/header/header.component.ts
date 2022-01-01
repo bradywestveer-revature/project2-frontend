@@ -12,11 +12,9 @@ export class HeaderComponent implements OnInit {
 	constructor (public dataService : DataService, private apiService : ApiService) {}
 	
 	logout () {
-		this.apiService.deleteSession ( (data : any) : void => {
-			let id : number = this.dataService.user.id;
-			this.dataService.user = <User>{}
-			this.dataService.users[id] = <User>{}
-		} );
+		this.apiService.deleteSession (() : void => {
+			this.dataService.user = <User> {};
+		});
 	}
 	
 	ngOnInit () : void {}

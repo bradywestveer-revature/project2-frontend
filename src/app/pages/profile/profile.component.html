@@ -7,7 +7,7 @@
 			<p class = "usernameText smallFont">@{{ user.username }}</p>
 			<p class = "mediumFont">✉ {{ user.email }}</p>
 			
-			<button *ngIf = "dataService.user.username === user.username" (click) = "showEditControls = true" class = "profileEditButton">Edit Profile</button>
+			<button *ngIf = "dataService.user.username === user.username" (click) = "showEditControls = true" class = "profileEditButton smallFont">Edit Profile</button>
 		</div>
 		
 		<div *ngIf = "showEditControls" class = "editControls profileInfoContainer flexColumn">

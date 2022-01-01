@@ -1,6 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { UserComponent } from "src/app/components/user/user.component";
 import { User } from "src/app/models/User";
 import { ApiService } from "src/app/services/api/api.service";
 
