@@ -13,23 +13,26 @@ export class ApiService {
 	constructor (private httpClient : HttpClient, private router : Router) {}
 	
 	async handleResponse (response : Observable <any>, callback? : Function) : Promise <any> {
-		const handler = async (data : any) : Promise <any> => {
-			if (data.success) {
+		const handler = async (body : any) : Promise <any> => {
+			//todo debug
+			console.log (body);
+			
+			if (body.success) {
 				if (typeof callback !== "undefined") {
-					await callback (data);
+					await callback (body);
 				}
 			}
 			
 			else {
-				alert (data.message);
+				alert (body.message);
 			}
 			
-			if (data.redirect !== null) {
-				this.router.navigate ([data.redirect]);
+			if (body.redirect !== null) {
+				this.router.navigate ([body.redirect]);
 			}
 		};
 		
-		//send data from response to handler (HttpErrorResponses keep data in error.error)
+		//send body from response to handler (HttpErrorResponses keep body in error.error)
 		response.subscribe ({
 			next: handler,
 			
