@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
 
 	passwordInput : string = "";
 	
-	currentPage: number = 1;
+	currentPage: number = 0;
 	
 	waitingForPosts: boolean = false;
 	
