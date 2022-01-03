@@ -11,7 +11,7 @@ import { DataService } from "src/app/services/data/data.service";
 export class HeaderComponent implements OnInit {
 	constructor (public dataService : DataService, private apiService : ApiService) {}
 	
-	logout () {
+	logout = () : void => {
 		this.apiService.deleteSession (() : void => {
 			this.dataService.user = <User> {};
 			
@@ -19,5 +19,5 @@ export class HeaderComponent implements OnInit {
 		});
 	}
 	
-	ngOnInit () : void {}
+	ngOnInit = () : void => {}
 }

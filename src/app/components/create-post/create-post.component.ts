@@ -21,7 +21,7 @@ export class CreatePostComponent implements OnInit {
 	
 	constructor (public dataService : DataService, private apiService : ApiService, private sanitizer : DomSanitizer) {}
 	
-	uploadImage (event : any) : void {
+	uploadImage = (event : any) : void => {
 		for (let i = 0; i < event.target.files.length; i++) {
 			//convert image to base64 string and add to this.images
 			const fileReader = new FileReader ();
@@ -37,13 +37,13 @@ export class CreatePostComponent implements OnInit {
 		}
 	}
 	
-	removePreviewImage (index : number) : void {
+	removePreviewImage = (index : number) : void => {
 		this.previewImageUrls.splice (index, 1);
 		
 		this.images.splice (index, 1);
 	}
 	
-	post () : void {
+	post = () : void => {
 		this.apiService.createPost (this.postInput, this.images, () : void => {
 			this.postInput = "";
 			
@@ -58,5 +58,5 @@ export class CreatePostComponent implements OnInit {
 		});
 	}
 	
-	ngOnInit () : void {}
+	ngOnInit = () : void => {}
 }

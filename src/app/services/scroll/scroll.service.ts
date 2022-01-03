@@ -6,7 +6,7 @@ import { Injectable } from "@angular/core";
 export class ScrollService {
 	constructor () {}
 	
-	onScrollToBottom (event : Event, callback : Function) : void {
+	onScrollToBottom = (event : Event, callback : Function) : void => {
 		const element : HTMLElement = <HTMLElement> event.target;
 		
 		//if we are scrolled to the bottom

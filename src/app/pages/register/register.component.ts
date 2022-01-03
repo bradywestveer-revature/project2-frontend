@@ -47,16 +47,16 @@ export class RegisterComponent implements OnInit {
 
 	constructor (private apiServ: ApiService) {}
 
-	ngOnInit (): void {}
+	ngOnInit = () : void => {};
 
-	isValidEmail (email:string) : boolean {
+	isValidEmail = (email : string) : boolean => {
 		let success : boolean;
 
 		let regexp = new RegExp (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 		success = regexp.test (email);
 		
 		return success;
-	}
+	};
 
 	// registerUserCallback (data: any) {
 	// 	console.log ("registerUserCallback()");
@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
 	// 	//this.router.navigate(data.redirect);
 	// }
 
-	registerUser () {
+	registerUser = () => {
 		// field validation, lengths and make sure retyped password matches
 		this.errorTextClass = "errorText";
 		if (this.firstNameInput.length < 1) {
@@ -149,5 +149,5 @@ export class RegisterComponent implements OnInit {
 		// this.errMessage = String (data.message);
 		// alert (data.message);
 		// });
-	}
+	};
 }

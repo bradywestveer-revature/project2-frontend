@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   
 	constructor (private apiServ: ApiService, private dataServ: DataService) {}
 
-	ngOnInit (): void {
+	ngOnInit = () : void => {
 		// this.errorTextClass = "errorText login-white";
 
 		// this.errMessage = "Please Login";
@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
 	// 	console.log ("loginUserCallback() exited");
 	// }
 
-	loginUser () {
+	loginUser = () : void => {
 		// validate fields
 		this.errorTextClass = "errorText";
 

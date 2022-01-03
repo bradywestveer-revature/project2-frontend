@@ -67,7 +67,7 @@ export class ProfileComponent implements OnInit {
 
 	constructor (private router: ActivatedRoute, public dataService: DataService, private apiService: ApiService, private scrollService : ScrollService) {}
 	
-	clearEditInputs () : void {
+	clearEditInputs = () : void => {
 		this.firstNameInput = "";
 		this.lastNameInput = "";
 		this.emailInput = "";
@@ -75,7 +75,7 @@ export class ProfileComponent implements OnInit {
 		this.passwordInput = "";
 	}
 	
-	editProfile () : void {
+	editProfile = () : void => {
 		this.apiService.updateUser (<User> {
 			firstName: this.firstNameInput,
 			lastName: this.lastNameInput,
@@ -103,7 +103,7 @@ export class ProfileComponent implements OnInit {
 		//todo if there's an error, we can never get more posts
 	}
 	
-	ngOnInit () {
+	ngOnInit = () : void => {
 		this.router.params.subscribe (paramaters => {
 			this.apiService.getUsers (async (data: any) : Promise <any> => {
 				//set dataService.users based on array of users in data

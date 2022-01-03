@@ -35,11 +35,11 @@ export class PostComponent implements OnInit {
 	}
 	
 	//todo do this inline in html somehow
-	getLikeCount () : number {
+	getLikeCount = () : number => {
 		return Object.keys (this.post.likes).length;
 	}
 	
-	toggleLike () : void {
+	toggleLike = () : void => {
 		this.liked = !this.liked;
 		
 		if (this.liked) {
@@ -57,7 +57,7 @@ export class PostComponent implements OnInit {
 		}
 	}
 	
-	postComment () : void {
+	postComment = () : void => {
 		this.apiService.createComment (this.post.id, this.postCommentInput, () : void => {
 			this.apiService.getPost (this.post.id, (data : any) : void => {
 				this.post = data.data;
@@ -65,7 +65,7 @@ export class PostComponent implements OnInit {
 		});
 	}
 	
-	ngOnInit () : void {
+	ngOnInit = () : void => {
 		if (this.post.likes [this.dataService.user.id] !== undefined) {
 			this.liked = true;
 		}

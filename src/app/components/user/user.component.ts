@@ -13,7 +13,7 @@ export class UserComponent implements OnInit {
 	
 	constructor (private router : Router) {}
 	
-	async navigate () : Promise <any> {
+	navigate = async () : Promise <any> => {
 		//todo slow
 		
 		await this.router.navigateByUrl ("/", { skipLocationChange: true });
@@ -21,5 +21,5 @@ export class UserComponent implements OnInit {
 		this.router.navigate (["@" + this.user.username]);
 	}
 	
-	ngOnInit () : void {}
+	ngOnInit = () : void => {}
 }
