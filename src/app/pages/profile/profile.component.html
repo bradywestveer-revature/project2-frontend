@@ -1,29 +1,29 @@
-<div class = "listContainer flexColumn" style = "padding-bottom: 0; overflow-y: scroll;">
-	<div class = "profileContainer card flex">
-		<img class = "profileImage" src = "{{ user.profileImageUrl }}">
+<div class = "profileContainer card flex">
+	<img class = "profileImage" src = "{{ user.profileImageUrl }}">
+	
+	<div *ngIf = "!showEditControls" class = "profileInfoContainer flexColumn">
+		<p class = "mediumFont">{{ user.firstName }} {{ user.lastName }}</p>
+		<p class = "usernameText smallFont">@{{ user.username }}</p>
+		<p class = "mediumFont">✉ {{ user.email }}</p>
 		
-		<div *ngIf = "!showEditControls" class = "profileInfoContainer flexColumn">
-			<p class = "mediumFont">{{ user.firstName }} {{ user.lastName }}</p>
-			<p class = "usernameText smallFont">@{{ user.username }}</p>
-			<p class = "mediumFont">✉ {{ user.email }}</p>
-			
-			<button *ngIf = "dataService.user.username === user.username" (click) = "showEditControls = true" class = "profileEditButton smallFont">Edit Profile</button>
-		</div>
-		
-		<div *ngIf = "showEditControls" class = "editControls profileInfoContainer flexColumn">
-			<input [(ngModel)] = "firstNameInput" class = "profileEditControl mediumFont" type = "text" placeholder = "First Name" />
-			<input [(ngModel)] = "lastNameInput" class = "profileEditControl mediumFont" type = "text" placeholder = "Last Name" />
-			<input [(ngModel)] = "emailInput" class = "profileEditControl mediumFont" type = "email" placeholder = "Email" />
-			<input [(ngModel)] = "usernameInput" class = "profileEditControl mediumFont" type = "text" placeholder = "Username" />
-			<input [(ngModel)] = "passwordInput" class = "profileEditControl mediumFont" type = "password" placeholder = "New Password" />
-			
-			<div class = "profileEditSubmitButtons flex">
-				<button (click) = "showEditControls = false; clearEditInputs ();" class = "profileEditSubmitButton mediumFont">✕</button>
-				
-				<button (click) = "editProfile ();" class = "profileEditSubmitButton mediumFont">✓</button>
-			</div>
-		</div>
+		<button *ngIf = "dataService.user.username === user.username" (click) = "showEditControls = true" class = "profileEditButton smallFont">Edit Profile</button>
 	</div>
 	
-	<app-posts [posts] = "posts" (scrollBottom) = "getPosts ();" class = "profilePosts"></app-posts>
+	<div *ngIf = "showEditControls" class = "editControls profileInfoContainer flexColumn">
+		<input [(ngModel)] = "firstNameInput" class = "profileEditControl mediumFont" type = "text" placeholder = "First Name" />
+		<input [(ngModel)] = "lastNameInput" class = "profileEditControl mediumFont" type = "text" placeholder = "Last Name" />
+		<input [(ngModel)] = "emailInput" class = "profileEditControl mediumFont" type = "email" placeholder = "Email" />
+		<input [(ngModel)] = "usernameInput" class = "profileEditControl mediumFont" type = "text" placeholder = "Username" />
+		<input [(ngModel)] = "passwordInput" class = "profileEditControl mediumFont" type = "password" placeholder = "New Password" />
+		
+		<div class = "profileEditSubmitButtons flex">
+			<button (click) = "showEditControls = false; clearEditInputs ();" class = "profileEditSubmitButton mediumFont">✕</button>
+			
+			<button (click) = "editProfile ();" class = "profileEditSubmitButton mediumFont">✓</button>
+		</div>
+	</div>
 </div>
+
+<app-create-post *ngIf = "user.id === dataService.user.id" [posts] = "posts"></app-create-post>
+
+<app-post *ngFor = "let post of posts" [user] = "dataService.users [post.creatorId]" [post] = "post"></app-post>

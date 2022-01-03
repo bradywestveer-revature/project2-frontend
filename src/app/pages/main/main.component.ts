@@ -2,13 +2,15 @@ import { Component, OnInit } from "@angular/core";
 import { Post } from "src/app/models/Post";
 import { ApiService } from "src/app/services/api/api.service";
 import { DataService } from "src/app/services/data/data.service";
+import { ScrollService } from "src/app/services/scroll/scroll.service";
 
 @Component ({
 	selector: "app-main",
 	templateUrl: "./main.component.html",
 	styleUrls: ["./main.component.css"],
 	host: {
-		class: "page flexColumn"
+		class: "page listContainer flexColumn",
+		"(scroll)": "scrollService.onScrollToBottom ($event, getPosts);"
 	}
 })
 export class MainComponent implements OnInit {
@@ -137,9 +139,11 @@ export class MainComponent implements OnInit {
 		}
 	];
 	
-	constructor (public dataService : DataService, private apiService : ApiService) {}
+	constructor (public dataService : DataService, private apiService : ApiService, private scrollService : ScrollService) {}
 	
-	getPosts () : void {
+	getPosts = () : void => {
+		console.log ("main: getPosts();");
+		
 		if (!this.waitingForPosts) {
 			this.waitingForPosts = true;
 			
@@ -157,7 +161,12 @@ export class MainComponent implements OnInit {
 	
 	ngOnInit () : void {
 		this.apiService.getUsers ((data : any) : void => {
-			this.dataService.users = data.data;
+			//set dataService.users based on array of users in data
+			for (let i : number = 0; i < data.data.length; i++) {
+				this.dataService.users [data.data [i].id] = data.data [i];
+			}
+			
+			this.dataService.user = data.data [localStorage ["userId"]];
 			
 			this.getPosts ();
 		});

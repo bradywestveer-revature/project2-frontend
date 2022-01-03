@@ -4,13 +4,15 @@ import { Post } from "src/app/models/Post";
 import { User } from "src/app/models/User";
 import { ApiService } from "src/app/services/api/api.service";
 import { DataService } from "src/app/services/data/data.service";
+import { ScrollService } from "src/app/services/scroll/scroll.service";
 
 @Component ({
 	selector: "app-profile",
 	templateUrl: "./profile.component.html",
 	styleUrls: ["./profile.component.css"],
 	host: {
-		class: "page flex"
+		class: "page listContainer flexColumn",
+		"(scroll)": "scrollService.onScrollToBottom ($event, getPosts);"
 	}
 })
 export class ProfileComponent implements OnInit {
@@ -63,7 +65,7 @@ export class ProfileComponent implements OnInit {
 		}
 	];
 
-	constructor (private router: ActivatedRoute, public dataService: DataService, private apiService: ApiService) { }
+	constructor (private router: ActivatedRoute, public dataService: DataService, private apiService: ApiService, private scrollService : ScrollService) {}
 	
 	clearEditInputs () : void {
 		this.firstNameInput = "";
@@ -85,7 +87,9 @@ export class ProfileComponent implements OnInit {
 		});
 	}
 	
-	getPosts () : void {
+	getPosts = () : void => {
+		console.log ("profile: getPosts();");
+		
 		if (!this.waitingForPosts) {
 			this.waitingForPosts = true;
 
@@ -101,22 +105,16 @@ export class ProfileComponent implements OnInit {
 		//todo if there's an error, we can never get more posts
 	}
 	
-	//todo remove async, it's for testing
-	async ngOnInit (): Promise<any> {
+	ngOnInit () {
 		this.router.params.subscribe (paramaters => {
-			//todo testing
-			for (let i = 0; i < Object.keys (this.dataService.users).length; i++) {
-				if (this.dataService.users [Object.keys (this.dataService.users) [i]].username === paramaters ["username"]) {
-					this.user = this.dataService.users [Object.keys (this.dataService.users) [i]];
-
-					break;
-				}
-			}
-			//end testing
-
 			this.apiService.getUsers (async (data: any) : Promise <any> => {
-				this.dataService.users = data.data;
-
+				//set dataService.users based on array of users in data
+				for (let i : number = 0; i < data.data.length; i++) {
+					this.dataService.users [data.data [i].id] = data.data [i];
+				}
+				
+				this.dataService.user = data.data [localStorage ["userId"]];
+				
 				//todo slow
 				for (let i = 0; i < Object.keys (this.dataService.users).length; i++) {
 					//if user's username matches username from URL

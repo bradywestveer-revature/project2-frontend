@@ -27,7 +27,7 @@ export class ApiService {
 				alert (body.message);
 			}
 			
-			if (body.redirect !== null) {
+			if (body.redirect !== undefined && body.redirect !== null) {
 				this.router.navigate ([body.redirect]);
 			}
 		};

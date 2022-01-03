@@ -33,12 +33,6 @@
 	flex-grow: 1;
 }
 
-.profilePosts {
-	height: unset;
-	padding: 0 0 10px;
-	overflow: unset;
-}
-
 @media (hover: hover) {
 	.profileContainer {
 		justify-content: flex-start;

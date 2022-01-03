@@ -5,13 +5,7 @@ import { User } from "src/app/models/User";
 	providedIn: "root"
 })
 export class DataService {
-	public user : User = <User> {
-		id: 1,
-		firstName: "Kevin",
-		lastName: "C",
-		username: "kevinc",
-		profileImageUrl: "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg"
-	};
+	public user : User = <User> {};
 	
 	//todo
 	// public users : User [] = [];

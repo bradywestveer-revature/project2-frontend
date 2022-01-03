@@ -139,6 +139,8 @@ export class LoginComponent implements OnInit {
 			
 			this.dataServ.user = <User> data.data;
 			
+			localStorage ["userId"] = data.data.id;
+			
 			this.dataServ.users [data.data.id] = <User> data.data;
 			
 			// console.log ("(data : any) : void =>...dataServ.user=" + this.dataServ.user);
