@@ -88,8 +88,6 @@ export class ProfileComponent implements OnInit {
 	}
 	
 	getPosts = () : void => {
-		console.log ("profile: getPosts();");
-		
 		if (!this.waitingForPosts) {
 			this.waitingForPosts = true;
 

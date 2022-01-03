@@ -142,8 +142,6 @@ export class MainComponent implements OnInit {
 	constructor (public dataService : DataService, private apiService : ApiService, private scrollService : ScrollService) {}
 	
 	getPosts = () : void => {
-		console.log ("main: getPosts();");
-		
 		if (!this.waitingForPosts) {
 			this.waitingForPosts = true;
 			
