@@ -8,7 +8,7 @@ import { User } from "src/app/models/User";
 	providedIn: "root"
 })
 export class ApiService {
-	baseUrl : string = "http://localhost/";
+	baseUrl : string = "http://localhost:81/";
 	
 	constructor (private httpClient : HttpClient, private router : Router) {}
 	
