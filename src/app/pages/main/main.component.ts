@@ -157,7 +157,7 @@ export class MainComponent implements OnInit {
 		//todo if there's an error, we can never get more posts
 	}
 	
-	ngOnInit = () : void => {
+	ngOnInit () : void {
 		this.apiService.getUsers ((data : any) : void => {
 			//set dataService.users based on array of users in data
 			for (let i : number = 0; i < data.data.length; i++) {

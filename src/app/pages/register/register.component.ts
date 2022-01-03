@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
 
 	constructor (private apiServ: ApiService) {}
 
-	ngOnInit = () : void => {};
+	ngOnInit () {}
 
 	isValidEmail = (email : string) : boolean => {
 		let success : boolean;
@@ -67,7 +67,13 @@ export class RegisterComponent implements OnInit {
 	// 	alert (data.message);
 	// 	//this.router.navigate(data.redirect);
 	// }
-
+	
+	keyDown = (event : KeyboardEvent) => {
+		if (event.key === "Enter") {
+			this.registerUser ();
+		}
+	};
+	
 	registerUser = () => {
 		// field validation, lengths and make sure retyped password matches
 		this.errorTextClass = "errorText";

@@ -103,7 +103,7 @@ export class ProfileComponent implements OnInit {
 		//todo if there's an error, we can never get more posts
 	}
 	
-	ngOnInit = () : void => {
+	ngOnInit () {
 		this.router.params.subscribe (paramaters => {
 			this.apiService.getUsers (async (data: any) : Promise <any> => {
 				//set dataService.users based on array of users in data

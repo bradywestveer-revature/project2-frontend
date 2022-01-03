@@ -58,5 +58,5 @@ export class CreatePostComponent implements OnInit {
 		});
 	}
 	
-	ngOnInit = () : void => {}
+	ngOnInit () {}
 }

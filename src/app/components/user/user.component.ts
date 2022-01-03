@@ -21,5 +21,5 @@ export class UserComponent implements OnInit {
 		this.router.navigate (["@" + this.user.username]);
 	}
 	
-	ngOnInit = () : void => {}
+	ngOnInit () {}
 }

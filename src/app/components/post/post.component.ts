@@ -65,7 +65,7 @@ export class PostComponent implements OnInit {
 		});
 	}
 	
-	ngOnInit = () : void => {
+	ngOnInit () {
 		if (this.post.likes [this.dataService.user.id] !== undefined) {
 			this.liked = true;
 		}
