@@ -91,7 +91,7 @@ export class ProfileComponent implements OnInit {
 		if (!this.waitingForPosts) {
 			this.waitingForPosts = true;
 
-			this.apiService.getPosts (this.currentPage, (data: any): void => {
+			this.apiService.getUserPosts (this.dataService.user.id, this.currentPage, (data: any): void => {
 				this.posts = data.data.concat (this.posts);
 
 				this.currentPage += 1;
