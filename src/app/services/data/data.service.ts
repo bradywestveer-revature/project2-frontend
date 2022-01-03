@@ -9,8 +9,7 @@ export class DataService {
 	
 	//todo
 	// public users : User [] = [];
-	//todo use more descriptive type than just any
-	public users : any = {
+	public users : { [key : string] : User } = {
 		1: <User> {
 			id: 1,
 			firstName: "Kevin",

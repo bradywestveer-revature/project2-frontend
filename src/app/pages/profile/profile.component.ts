@@ -111,7 +111,7 @@ export class ProfileComponent implements OnInit {
 					this.dataService.users [data.data [i].id] = data.data [i];
 				}
 				
-				this.dataService.user = data.data [localStorage ["userId"]];
+				this.dataService.user = this.dataService.users [localStorage ["userId"]];
 				
 				//todo slow
 				for (let i = 0; i < Object.keys (this.dataService.users).length; i++) {

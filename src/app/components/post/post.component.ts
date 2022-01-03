@@ -45,8 +45,8 @@ export class PostComponent implements OnInit {
 		if (this.liked) {
 			this.apiService.createLike (this.post.id);
 			
-			//change this.likes on client-side, set id to 0 to not conflict with other like ids
-			this.post.likes [this.dataService.user.id] = 0;
+			//change this.likes on client-side, set id to -1 to not conflict with other like ids
+			this.post.likes [this.dataService.user.id] = -1;
 		}
 		
 		else {
