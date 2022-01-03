@@ -12,7 +12,7 @@ import { DataService } from "src/app/services/data/data.service";
 	}
 })
 export class MainComponent implements OnInit {
-	currentPage : number = 1;
+	currentPage : number = 0;
 	
 	waitingForPosts : boolean = false;
 	

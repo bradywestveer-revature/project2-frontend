@@ -11,10 +11,10 @@
 		</div>
 		
 		<div *ngIf = "showEditControls" class = "editControls profileInfoContainer flexColumn">
-			<input [(ngModel)] = "firstNameInput" class = "profileEditControl mediumFont" type = "text" placeholder = "First Name" />
-			<input [(ngModel)] = "lastNameInput" class = "profileEditControl mediumFont" type = "text" placeholder = "Last Name" />
-			<input [(ngModel)] = "emailInput" class = "profileEditControl mediumFont" type = "email" placeholder = "Email" />
-			<input [(ngModel)] = "usernameInput" class = "profileEditControl mediumFont" type = "text" placeholder = "Username" />
+			<input [(ngModel)] = "firstNameInput" class = "profileEditControl mediumFont" type = "text" placeholder = "{{user.firstName}}" />
+			<input [(ngModel)] = "lastNameInput" class = "profileEditControl mediumFont" type = "text" placeholder = "{{user.lastName}}" />
+			<input [(ngModel)] = "emailInput" class = "profileEditControl mediumFont" type = "email" placeholder = "{{user.email}}" />
+			<input [(ngModel)] = "usernameInput" class = "profileEditControl mediumFont" type = "text" placeholder = "{{user.username}}" />
 			<input [(ngModel)] = "passwordInput" class = "profileEditControl mediumFont" type = "password" placeholder = "New Password" />
 			
 			<div class = "profileEditSubmitButtons flex">
