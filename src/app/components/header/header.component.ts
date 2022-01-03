@@ -14,6 +14,8 @@ export class HeaderComponent implements OnInit {
 	logout () {
 		this.apiService.deleteSession (() : void => {
 			this.dataService.user = <User> {};
+			
+			localStorage.removeItem ("userId");
 		});
 	}
 	
