@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
+import { Router } from "@angular/router";
 import { Post } from "src/app/models/Post";
 import { ApiService } from "src/app/services/api/api.service";
 import { DataService } from "src/app/services/data/data.service";
@@ -19,7 +20,7 @@ export class CreatePostComponent implements OnInit {
 	
 	previewImageUrls : SafeUrl [] = [];
 	
-	constructor (public dataService : DataService, private apiService : ApiService, private sanitizer : DomSanitizer) {}
+	constructor (public dataService : DataService, private apiService : ApiService, private sanitizer : DomSanitizer, private router : Router) {}
 	
 	uploadImage = (event : any) : void => {
 		for (let i = 0; i < event.target.files.length; i++) {
@@ -44,17 +45,18 @@ export class CreatePostComponent implements OnInit {
 	}
 	
 	post = () : void => {
-		this.apiService.createPost (this.postInput, this.images, () : void => {
+		this.apiService.createPost (this.postInput, this.images, async () : Promise <any> => {
 			this.postInput = "";
 			
 			this.images = [];
 
 			this.previewImageUrls = [];
 			
-			this.apiService.getNewPosts (this.posts [0].id, (data : any) : void => {
-				//this.posts references the passed value from the parent component
-				this.posts = data.data.concat (this.posts);
-			});
+			//todo slow
+			
+			await this.router.navigateByUrl ("/login", { skipLocationChange: true });
+			
+			this.router.navigate (["/"]);
 		});
 	}
 	

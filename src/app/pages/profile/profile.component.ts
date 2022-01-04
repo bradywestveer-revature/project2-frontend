@@ -104,6 +104,12 @@ export class ProfileComponent implements OnInit {
 	}
 	
 	ngOnInit () {
+		this.dataService.users = {};
+		
+		//todo clear users
+		//todo do we need to clear user?
+		console.log (this.dataService.user);
+		
 		this.router.params.subscribe (paramaters => {
 			this.apiService.getUsers (async (data: any) : Promise <any> => {
 				//set dataService.users based on array of users in data

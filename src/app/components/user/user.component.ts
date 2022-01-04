@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
 		//todo slow
 		
 		await this.router.navigateByUrl ("/", { skipLocationChange: true });
-
+		
 		this.router.navigate (["@" + this.user.username]);
 	}
 	

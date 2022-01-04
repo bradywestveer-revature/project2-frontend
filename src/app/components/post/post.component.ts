@@ -66,6 +66,8 @@ export class PostComponent implements OnInit {
 	}
 	
 	ngOnInit () {
+		//todo wait until we get posts in Main/Profile
+		
 		if (this.post.likes [this.dataService.user.id] !== undefined) {
 			this.liked = true;
 		}

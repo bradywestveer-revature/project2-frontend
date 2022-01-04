@@ -110,10 +110,6 @@ export class ApiService {
 		this.handleResponse (this.get ("post?page=" + page.toString ()), callback);
 	}
 	
-	getNewPosts = (lastPostId : number, callback? : Function) : void => {
-		this.handleResponse (this.get ("post?lastPostId=" + lastPostId.toString ()), callback);
-	}
-
 	getUserPosts = (userId : number, page : number, callback? : Function) : void => {
 		this.handleResponse (this.get ("post?userId=" + userId.toString () + "&page=" + page.toString ()), callback);
 	}
