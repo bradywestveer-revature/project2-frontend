@@ -43,14 +43,14 @@ export class PostComponent implements OnInit {
 		this.liked = !this.liked;
 		
 		if (this.liked) {
-			this.apiService.createLike (this.post.id);
+			this.apiService.createPostLike (this.post.id);
 			
 			//change this.likes on client-side, set id to -1 to not conflict with other like ids
 			this.post.likes [this.dataService.user.id] = -1;
 		}
 		
 		else {
-			this.apiService.deleteLike (this.post.likes [this.dataService.user.id]);
+			this.apiService.deletePostLike (this.post.id);
 			
 			//change this.likes on client-side
 			delete this.post.likes [this.dataService.user.id];

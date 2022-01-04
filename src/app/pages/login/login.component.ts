@@ -129,36 +129,9 @@ export class LoginComponent implements OnInit {
 		// }
 
 		// this.user.password = this.passwordInput;
-
-		//this.apiServ.login(this.user, this.loginUserCallback);
+		
 		this.apiServ.createSession (this.identifierInput, this.passwordInput, (data : any) : void => {
-			// console.log ("(data : any) : void => entered");
-
-			// console.log ("data.data=" + data.data.id + " " + data.data.firstName);
-
-			// this.dataServ.user = <User>{ // our session GET returns User
-			// 	firstName: data.data.firstName,
-			// 	lastName: data.data.lastName,
-			// 	username: data.data.username,
-			// 	profileImageUrl: data.data.profileImageUrl
-			// };
-			
-			this.dataServ.user = <User> data.data;
-			
 			localStorage ["userId"] = data.data.id;
-			
-			this.dataServ.users [data.data.id] = <User> data.data;
-			
-			// console.log ("(data : any) : void =>...dataServ.user=" + this.dataServ.user);
-
-			// this.dataServ.users[data.data.id] = <User>{
-			// 	firstName: data.data.firstName,
-			// 	lastName: data.data.lastName,
-			// 	username: data.data.username,
-			// 	profileImageUrl: data.data.profileImageUrl
-			// };
-
-			// console.log ("(data : any) : void => exited");
 		});
 	}
 }

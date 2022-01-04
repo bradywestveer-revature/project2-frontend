@@ -24,6 +24,11 @@ export class ApiService {
 			}
 			
 			else {
+				//todo
+				if (body.message.includes ("Unauthorized")) {
+					localStorage.removeItem ("userId");
+				}
+				
 				alert (body.message);
 			}
 			
@@ -123,15 +128,15 @@ export class ApiService {
 		}), callback);
 	}
 	
-	//like
+	//postlike
 	
-	createLike = (postId : number, callback? : Function) : void => {
-		this.handleResponse (this.post ("like/", {
+	createPostLike = (postId : number, callback? : Function) : void => {
+		this.handleResponse (this.post ("postlike/", {
 			postId: postId
 		}), callback);
 	}
 	
-	deleteLike = (likeId : number, callback? : Function) => {
-		this.handleResponse (this.delete ("like/" + likeId.toString ()), callback);
+	deletePostLike = (postId : number, callback? : Function) => {
+		this.handleResponse (this.delete ("postlike/" + postId.toString ()), callback);
 	}
 }

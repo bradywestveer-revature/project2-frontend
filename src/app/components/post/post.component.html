@@ -19,17 +19,17 @@
 		<div class = "postControl flex">
 			<a class = "flex" (click) = "showComments = !showComments;"><img src = "assets/comment.png" /></a>
 			
-			<p class = "smallFont">{{ post.comments.length }}</p>
+			<p *ngIf = "post.comments.length > 0" class = "smallFont">{{ post.comments.length }}</p>
 		</div>
 		
 		<div class = "postControl flex">
+			<p *ngIf = "getLikeCount () > 0" class = "smallFont">{{ getLikeCount () }}</p>
+			
 			<a class = "flex" (click) = "toggleLike ();">
 				<img [ngClass] = "{ 'displayNone': !liked }" src = "assets/fire.png" />
 				
 				<img [ngClass] = "{ 'displayNone': liked }" src = "assets/fire_gray.png" />
 			</a>
-			
-			<p class = "smallFont">{{ getLikeCount () }}</p>
 		</div>
 	</div>
 	

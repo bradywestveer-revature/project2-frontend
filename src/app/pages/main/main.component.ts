@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Post } from "src/app/models/Post";
+import { User } from "src/app/models/User";
 import { ApiService } from "src/app/services/api/api.service";
 import { DataService } from "src/app/services/data/data.service";
 import { ScrollService } from "src/app/services/scroll/scroll.service";
@@ -40,10 +41,7 @@ export class MainComponent implements OnInit {
 	
 	ngOnInit () : void {
 		this.dataService.users = {};
-		
-		//todo clear users
-		//todo do we need to clear user?
-		console.log (this.dataService.user);
+		this.dataService.user = <User> {};
 		
 		this.apiService.getUsers ((data : any) : void => {
 			//set dataService.users based on array of users in data

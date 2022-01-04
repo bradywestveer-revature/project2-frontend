@@ -1,7 +1,7 @@
 <div id = "header" class = "flex">
 	<div></div>
 	
-	<a class = "largeFont flex" routerLink = "/">Project 2 🔥</a>
+	<a class = "largeFont flex" (click) = "navigateToMain ();">Project 2 🔥</a>
 	
 	<div [ngClass] = "{ 'hidden': dataService.user.id === undefined }" id = "headerUser" class = "flex">
 		<app-user [user] = "dataService.user"></app-user>

@@ -9,15 +9,15 @@ html, body {
 
 body {
 	margin: 0;
-	animation: fire 30s linear infinite;
+	animation: fire 20s ease-in-out infinite;
 }
 
 @keyframes fire {
-	from, to { background: #801100; }
+	from, to { background: #800500; }
 	
-	25%, 75% { background: #803300; }
+	25%, 75% { background: #801000; }
 	
-	50% { background: #804600; }
+	50% { background: #802500; }
 }
 
 p, a, label {
