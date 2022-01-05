@@ -93,25 +93,25 @@ export class LoginComponent implements OnInit {
 		// validate fields
 		this.errorTextClass = "errorText";
 
-		if (this.identifierInput.length < 1) {
-			this.errorTextClass = "errorText";
+		// if (this.identifierInput.trim () === "") {
+		// 	this.errorTextClass = "errorText";
 
-			this.errMessage = "Invalid Username.";
+		// 	this.errMessage = "Invalid Username.";
 
-			// this.usernameErr = true;
+		// 	// this.usernameErr = true;
 
-			return;
-		}
+		// 	return;
+		// }
 
-		if (this.passwordInput.length < 8) {
-			this.errorTextClass = "errorText";
+		// if (this.passwordInput.trim () === "") {
+		// 	this.errorTextClass = "errorText";
 
-			this.errMessage = "Invalid password, must be at least 8 characters.";
+		// 	this.errMessage = "Invalid password.";
 
-			// this.passErr = true;
+		// 	// this.passErr = true;
 
-			return;
-		}
+		// 	return;
+		// }
 
 		this.errorTextClass = "errorText login-white";
 

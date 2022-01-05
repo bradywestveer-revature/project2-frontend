@@ -107,9 +107,9 @@ export class RegisterComponent implements OnInit {
 			this.errMessage = "";
 		}
 
-		if (this.usernameInput.length < 1) {
+		if (this.usernameInput.trim () === "" || (/^[\w-]+$/).test (this.usernameInput) === false) {
 			// this.usernameErr = true;
-			this.errMessage = "Username can not be blank.";
+			this.errMessage = "Invalid username.";
 			return;
 		}
 		else {
@@ -126,9 +126,9 @@ export class RegisterComponent implements OnInit {
 			this.errMessage = "";
 		}
 
-		if (this.passwordInput.length < 8) {
+		if (this.passwordInput.trim () === "") {
 			// this.passErr = true;
-			this.errMessage = "Password must be at least 8 characters.";
+			this.errMessage = "Invalid password.";
 			return;
 		}
 		else {
