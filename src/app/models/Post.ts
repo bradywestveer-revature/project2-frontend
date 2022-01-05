@@ -10,4 +10,6 @@ export interface Post {
 	likes : any;
 	
 	comments : Comment [];
+	
+	created : string;
 };

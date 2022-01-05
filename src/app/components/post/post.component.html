@@ -37,7 +37,7 @@
 		<app-comment *ngFor = "let comment of post.comments" [user] = "dataService.users [comment.creatorId]" [body] = "comment.body"></app-comment>
 		
 		<div class = "postCommentsInputContainer flex">
-			<input class = "postCommentsInput smallFont" placeholder = "Write a comment..." [(ngModel)] = "postCommentInput" />
+			<input [(ngModel)] = "postCommentInput" (keydown) = "commentInputKeyDown ($event);" class = "postCommentsInput smallFont" placeholder = "Write a comment..." />
 			
 			<button class = "smallFont" (click) = "postComment ();">Post</button>
 		</div>

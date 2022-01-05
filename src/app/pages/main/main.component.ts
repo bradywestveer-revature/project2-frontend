@@ -28,7 +28,7 @@ export class MainComponent implements OnInit {
 			this.waitingForPosts = true;
 			
 			this.apiService.getPosts (this.currentPage, (data : any) : void => {
-				this.posts = data.data.concat (this.posts);
+				this.posts = this.posts.concat (data.data);
 				
 				this.currentPage += 1;
 				

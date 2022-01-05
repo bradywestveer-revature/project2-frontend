@@ -63,6 +63,14 @@ export class PostComponent implements OnInit {
 				this.post = data.data;
 			});
 		});
+		
+		this.postCommentInput = "";
+	}
+	
+	commentInputKeyDown = (event : KeyboardEvent) : void => {
+		if (event.key === "Enter") {
+			this.postComment ();
+		}
 	}
 	
 	ngOnInit () {

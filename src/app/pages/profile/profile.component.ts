@@ -34,36 +34,7 @@ export class ProfileComponent implements OnInit {
 	
 	waitingForPosts: boolean = false;
 	
-	// posts : Post [] = [];
-	//todo
-	posts: Post[] = [
-		{
-			id: 1,
-
-			creatorId: 1,
-
-			body: "I'm Kevin. I am currently logged in. I already liked this post. Here are some images.",
-
-			imageUrls: [
-				"https://cdn.britannica.com/42/91642-050-332E5C66/Keukenhof-Gardens-Lisse-Netherlands.jpg",
-				"https://media.istockphoto.com/photos/blue-ridge-parkway-scenic-landscape-appalachian-mountains-ridges-picture-id154232673?b=1&k=20&m=154232673&s=170667a&w=0&h=rHdSC9KKqkG8q-KKWfiqMEalaQkleMZ3zxaCYE8Eck8=",
-				"https://www.gardeningknowhow.com/wp-content/uploads/2007/03/flowers-1.jpg",
-				"https://www.thespruce.com/thmb/TIUYmTRJ3NOFnY9LJ6FzMd_9oBc=/2571x1928/smart/filters:no_upscale()/small-garden-ideas-and-inspiration-4101842-01-5e0462c2365e42de86a4f3ebc2152c1b.jpg"
-			],
-
-			likes: {
-				1: 1
-			},
-
-			comments: [
-				{
-					id: 1,
-					creatorId: 2,
-					body: "I'm David. Nice flowers!"
-				}
-			]
-		}
-	];
+	posts : Post [] = [];
 
 	constructor (private router: ActivatedRoute, public dataService: DataService, private apiService: ApiService, private scrollService : ScrollService) {}
 	
@@ -91,8 +62,8 @@ export class ProfileComponent implements OnInit {
 		if (!this.waitingForPosts) {
 			this.waitingForPosts = true;
 
-			this.apiService.getUserPosts (this.dataService.user.id, this.currentPage, (data: any): void => {
-				this.posts = data.data.concat (this.posts);
+			this.apiService.getUserPosts (this.user.id, this.currentPage, (data: any): void => {
+				this.posts = this.posts.concat (data.data);
 
 				this.currentPage += 1;
 

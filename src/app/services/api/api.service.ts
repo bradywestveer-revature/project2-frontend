@@ -116,7 +116,7 @@ export class ApiService {
 	}
 	
 	getUserPosts = (userId : number, page : number, callback? : Function) : void => {
-		this.handleResponse (this.get ("post?userId=" + userId.toString () + "&page=" + page.toString ()), callback);
+		this.handleResponse (this.get ("post/user?userId=" + userId.toString () + "&page=" + page.toString ()), callback);
 	}
 	
 	//comment
