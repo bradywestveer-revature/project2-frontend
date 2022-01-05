@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { Post } from "src/app/models/Post";
 import { ApiService } from "src/app/services/api/api.service";
 import { DataService } from "src/app/services/data/data.service";
+import { ImageData } from "src/app/models/ImageData";
 
 @Component ({
 	selector: "app-create-post",
@@ -16,7 +17,7 @@ export class CreatePostComponent implements OnInit {
 	
 	postInput : string = "";
 	
-	images : string [] = [];
+	images : ImageData [] = [];
 	
 	previewImageUrls : SafeUrl [] = [];
 	
@@ -28,7 +29,11 @@ export class CreatePostComponent implements OnInit {
 			const fileReader = new FileReader ();
 			
 			fileReader.onloadend = () => {
-				this.images.push (<string> fileReader.result);
+				//split by comma to remove the base64 header
+				this.images.push ({
+					fileName: event.target.files [i].name,
+					data: (<string> fileReader.result).split (",") [1]
+				});
 			};
 			
 			fileReader.readAsDataURL (event.target.files [i]);

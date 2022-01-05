@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { User } from "src/app/models/User";
+import { ImageData } from "src/app/models/ImageData";
 
 @Injectable ({
 	providedIn: "root"
@@ -14,7 +15,7 @@ export class ApiService {
 	
 	handleResponse = async (response : Observable <any>, callback? : Function) : Promise <any> => {
 		const handler = async (body : any) : Promise <any> => {
-			//todo debug
+			//todo remove, for debugging/presentation
 			console.log (body);
 			
 			if (body.success) {
@@ -100,7 +101,7 @@ export class ApiService {
 	
 	//post
 	
-	createPost = (body : string, images : string [], callback? : Function) : void => {
+	createPost = (body : string, images : ImageData [], callback? : Function) : void => {
 		this.handleResponse (this.post ("post", {
 			body: body,
 			images: images
