@@ -9,7 +9,7 @@ html, body {
 
 body {
 	margin: 0;
-	animation: fire 20s ease-in-out infinite;
+	animation: fire 10s ease-in-out infinite;
 }
 
 @keyframes fire {
