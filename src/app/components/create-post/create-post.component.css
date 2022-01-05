@@ -24,10 +24,6 @@
 	cursor: pointer;
 }
 
-.addPostImagesInput {
-	display: none;
-}
-
 .previewImageContainer {
 	position: relative;
 }

@@ -95,8 +95,9 @@ export class ApiService {
 		this.handleResponse (this.get ("user"), callback);
 	}
 	
-	updateUser = (user : User, callback? : Function) : void => {
-		this.handleResponse (this.put ("user/" + user.id.toString (), user), callback);
+	//todo don't use any
+	updateUser = (userData : any, callback? : Function) : void => {
+		this.handleResponse (this.put ("user/" + userData.id.toString (), userData), callback);
 	}
 	
 	//post

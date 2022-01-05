@@ -1,9 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { SafeUrl } from "@angular/platform-browser";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Post } from "src/app/models/Post";
 import { User } from "src/app/models/User";
 import { ApiService } from "src/app/services/api/api.service";
 import { DataService } from "src/app/services/data/data.service";
+import { FileService } from "src/app/services/file/file.service";
 import { ScrollService } from "src/app/services/scroll/scroll.service";
 
 @Component ({
@@ -16,10 +18,14 @@ import { ScrollService } from "src/app/services/scroll/scroll.service";
 	}
 })
 export class ProfileComponent implements OnInit {
-	user: User = <User>{};
+	user: User = <User> {};
+	
+	currentProfileImageUrl : SafeUrl = "";
 	
 	showEditControls: boolean = false;
-
+	
+	profileImageData : ImageData = <ImageData> {};
+	
 	firstNameInput : string = "";
 
 	lastNameInput : string = "";
@@ -36,7 +42,7 @@ export class ProfileComponent implements OnInit {
 	
 	posts : Post [] = [];
 
-	constructor (private router: ActivatedRoute, public dataService: DataService, private apiService: ApiService, private scrollService : ScrollService) {}
+	constructor (private activatedRoute: ActivatedRoute, public dataService: DataService, private apiService: ApiService, private scrollService : ScrollService, private fileService : FileService, private router : Router) {}
 	
 	clearEditInputs = () : void => {
 		this.firstNameInput = "";
@@ -46,17 +52,46 @@ export class ProfileComponent implements OnInit {
 		this.passwordInput = "";
 	}
 	
-	editProfile = () : void => {
-		this.apiService.updateUser (<User> {
-			firstName: this.firstNameInput,
-			lastName: this.lastNameInput,
-			email: this.emailInput,
-			username: this.usernameInput,
-			password: this.passwordInput
-		}, (data : any) : void => {
-			this.user = <User> data;
+	uploadProfileImage = (event : any) : void => {
+		this.currentProfileImageUrl = this.fileService.getPreviewUrl (event.target.files [0]);
+		
+		this.fileService.getImageData (event.target.files [0], (imageData : ImageData) : void => {
+			this.profileImageData = imageData;
 		});
+	};
+	
+	editProfile = () : void => {
+		this.apiService.updateUser ({
+			id: this.user.id,
+			firstName: this.firstNameInput === "" ? undefined : this.firstNameInput,
+			lastName: this.lastNameInput === "" ? undefined : this.lastNameInput,
+			email: this.emailInput === "" ? undefined : this.emailInput,
+			username: this.usernameInput === "" ? undefined : this.usernameInput,
+			password: this.passwordInput === "" ? undefined : this.passwordInput,
+			profileImageData: this.profileImageData === <ImageData> {} ? undefined : this.profileImageData
+		}, async (data : any) : Promise <any> => {
+			this.dataService.user = <User> data.data;
+			
+			//todo slow
+			
+			await this.router.navigateByUrl ("/", { skipLocationChange: true });
+			
+			this.router.navigate (["/@" + data.data.username]);
+			
+			//todo do this if we don't reload
+			// this.user = <User> data.data;
+		});
+		
+		this.cancelEditProfile ();
 	}
+	
+	cancelEditProfile = () : void => {
+		this.showEditControls = false;
+		
+		this.clearEditInputs ();
+		
+		this.currentProfileImageUrl = this.user.profileImageUrl;
+	};
 	
 	getPosts = () : void => {
 		if (!this.waitingForPosts) {
@@ -78,7 +113,7 @@ export class ProfileComponent implements OnInit {
 		this.dataService.users = {};
 		this.dataService.user = <User> {};
 		
-		this.router.params.subscribe (paramaters => {
+		this.activatedRoute.params.subscribe (paramaters => {
 			this.apiService.getUsers (async (data: any) : Promise <any> => {
 				//set dataService.users based on array of users in data
 				for (let i : number = 0; i < data.data.length; i++) {
@@ -92,7 +127,9 @@ export class ProfileComponent implements OnInit {
 					//if user's username matches username from URL
 					if (this.dataService.users [Object.keys (this.dataService.users) [i]].username === paramaters ["username"]) {
 						this.user = this.dataService.users [Object.keys (this.dataService.users) [i]];
-
+						
+						this.currentProfileImageUrl = this.user.profileImageUrl;
+						
 						break;
 					}
 				}

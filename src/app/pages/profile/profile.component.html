@@ -1,5 +1,9 @@
 <div class = "profileContainer card flex">
-	<img class = "profileImage" src = "{{ user.profileImageUrl }}">
+	<label [ngStyle] = "{ 'pointer-events': showEditControls ? null : 'none' }" class = "editProfileImageLabel">
+		<img class = "profileImage" [src] = "currentProfileImageUrl">
+		
+		<input type = "file" accept = "image/*" class = "editProfileImageInput" (input) = "uploadProfileImage ($event);" />
+	</label>
 	
 	<div *ngIf = "!showEditControls" class = "profileInfoContainer flexColumn">
 		<p class = "mediumFont">{{ user.firstName }} {{ user.lastName }}</p>
@@ -17,7 +21,7 @@
 		<input [(ngModel)] = "passwordInput" class = "profileEditControl mediumFont" type = "password" placeholder = "New Password" />
 		
 		<div class = "profileEditSubmitButtons flex">
-			<button (click) = "showEditControls = false; clearEditInputs ();" class = "profileEditSubmitButton mediumFont">✕</button>
+			<button (click) = "cancelEditProfile ();" class = "profileEditSubmitButton mediumFont">✕</button>
 			
 			<button (click) = "editProfile ();" class = "profileEditSubmitButton mediumFont">✓</button>
 		</div>
