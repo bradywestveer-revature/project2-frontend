@@ -1,7 +1,7 @@
 <div class = "card flexColumn">
 	<app-user [user] = "user"></app-user>
 	
-	<p class = "postBody mediumFont">{{ post.body }}</p>
+	<pre class = "postBody flexColumn mediumFont">{{ post.body }}</pre>
 	
 	<div *ngIf = "post.imageUrls.length > 0" class = "postImages">
 		<div class = "postImagesControls flex">
@@ -14,6 +14,8 @@
 			<img *ngFor = "let url of post.imageUrls; index as i" [ngClass] = "{ 'displayNone': i !== currentImageIndex }" src = "{{ url }}" class = "postImage" />
 		</div>
 	</div>
+	
+	<iframe *ngIf = "youTubeVideoUrl !== null" class = "postYouTubePlayer" [src] = "youTubeVideoUrl" allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	
 	<div class = "postControls flex">
 		<div class = "postControl flex">

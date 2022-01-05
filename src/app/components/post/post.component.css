@@ -9,6 +9,15 @@
 	}
 }
 
+.postBody {
+	white-space: pre-wrap;
+}
+
+.postYouTubePlayer {
+	width: 100%;
+	height: 293px;
+}
+
 .postImages {
 	width: 100%;
 	position: relative;

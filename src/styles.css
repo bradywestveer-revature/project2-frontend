@@ -20,7 +20,7 @@ body {
 	50% { background: #802500; }
 }
 
-p, a, label {
+p, pre, a, label {
 	margin: 0;
 	padding: 0;
 	color: white;
@@ -33,8 +33,8 @@ a {
 }
 
 button, input, textarea {
-	outline: 0;
-	border: 0;
+	outline: none;
+	border: none;
 	padding: 10px;
 	box-sizing: border-box;
 	color: white;
@@ -43,6 +43,10 @@ button, input, textarea {
 
 button {
 	cursor: pointer;
+}
+
+iframe {
+	border: none;
 }
 
 .hidden {
