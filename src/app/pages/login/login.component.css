@@ -29,3 +29,9 @@
 	width: 20px;
 	height: 18px;    
 }
+
+.inline {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
