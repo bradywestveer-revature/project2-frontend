@@ -132,6 +132,8 @@ export class LoginComponent implements OnInit {
 		
 		this.apiServ.createSession (this.identifierInput, this.passwordInput, (data : any) : void => {
 			localStorage ["userId"] = data.data.id;
+		}, (data : any) : void => {
+			this.errMessage = data.message;
 		});
 	}
 }

@@ -13,7 +13,7 @@ export class ApiService {
 	
 	constructor (private httpClient : HttpClient, private router : Router) {}
 	
-	handleResponse = async (response : Observable <any>, callback? : Function) : Promise <any> => {
+	handleResponse = async (response : Observable <any>, callback? : Function, errorCallback? : Function) : Promise <any> => {
 		const handler = async (body : any) : Promise <any> => {
 			//todo remove, for debugging/presentation
 			console.log (body);
@@ -25,12 +25,20 @@ export class ApiService {
 			}
 			
 			else {
-				//todo
-				if (body.message.includes ("Unauthorized")) {
-					localStorage.removeItem ("userId");
+				if (typeof errorCallback !== "undefined") {
+					errorCallback (body);
 				}
 				
-				alert (body.message);
+				else {
+					//todo
+					if (body.message.includes ("Unauthorized")) {
+						localStorage.removeItem ("userId");
+					}
+					
+					else {
+						alert (body.message);
+					}
+				}
 			}
 			
 			if (body.redirect !== undefined && body.redirect !== null) {
@@ -74,11 +82,11 @@ export class ApiService {
 	
 	//session
 	
-	createSession = (identifier : string, password : string, callback? : Function) => {
+	createSession = (identifier : string, password : string, callback? : Function, errorCallback? : Function) => {
 		this.handleResponse (this.post ("session", {
 			identifier: identifier,
 			password: password
-		}), callback);
+		}), callback, errorCallback);
 	}
 	
 	deleteSession = (callback? : Function) => {
