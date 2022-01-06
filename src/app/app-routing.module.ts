@@ -1,9 +1,11 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes, UrlSegment } from "@angular/router";
+import { ChangePasswordComponent } from "./pages/change-password/change-password.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { MainComponent } from "./pages/main/main.component";
 import { ProfileComponent } from "./pages/profile/profile.component";
 import { RegisterComponent } from "./pages/register/register.component";
+import { ResetPasswordComponent } from "./pages/reset-password/reset-password.component";
 
 const routes: Routes = [
 	{
@@ -14,6 +16,16 @@ const routes: Routes = [
 	{
 		path: "register",
 		component: RegisterComponent
+	},
+
+	{
+		path: "reset-password",
+		component: ResetPasswordComponent
+	},
+
+	{
+		path: "change-password",
+		component: ChangePasswordComponent
 	},
 	
 	{

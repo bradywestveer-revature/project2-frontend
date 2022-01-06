@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
 		
 		return success;
 	};
-
+	// "[\\w-]+@[\\w-]+\\.[a-zA-z]+"
 	// registerUserCallback (data: any) {
 	// 	console.log ("registerUserCallback()");
 	// 	console.log (data.message);

@@ -134,4 +134,14 @@ export class ApiService {
 	deleteLike = (likeId : number, callback? : Function) => {
 		this.handleResponse (this.delete ("like/" + likeId.toString ()), callback);
 	}
+
+	// password reset (aka Forgot Password?)
+
+	resetPassword = (email : string, callback? : Function) => {
+		this.handleResponse (this.post ("reset-password", {email: email}), callback);
+	}
+
+	changePassword = (token : string, password: string, callback? : Function) => {
+		this.handleResponse (this.put ("reset-password", {token: token, password: password}), callback);
+	}
 }

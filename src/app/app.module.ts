@@ -13,6 +13,8 @@ import { CommentComponent } from "./components/comment/comment.component";
 import { UserComponent } from "./components/user/user.component";
 import { CreatePostComponent } from "./components/create-post/create-post.component";
 import { FormsModule } from "@angular/forms";
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 @NgModule ({
 	declarations: [
@@ -25,7 +27,9 @@ import { FormsModule } from "@angular/forms";
 		PostComponent,
 		CommentComponent,
 		UserComponent,
-		CreatePostComponent
+		CreatePostComponent,
+  		ResetPasswordComponent,
+    	ChangePasswordComponent
 	],
 	imports: [
 		BrowserModule,
