@@ -4,7 +4,10 @@ import { ApiService } from 'src/app/services/api/api.service';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.css']
+  styleUrls: ['./reset-password.component.css'],
+  host: {
+    class: "page flexColumn"
+  }
 })
 export class ResetPasswordComponent implements OnInit {
 
