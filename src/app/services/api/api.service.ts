@@ -4,13 +4,12 @@ import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { User } from "src/app/models/User";
 import { ImageData } from "src/app/models/ImageData";
+import { environment } from "src/environments/environment";
 
 @Injectable ({
 	providedIn: "root"
 })
 export class ApiService {
-	baseUrl : string = "http://localhost:81/";
-	
 	constructor (private httpClient : HttpClient, private router : Router) {}
 	
 	handleResponse = async (response : Observable <any>, callback? : Function, errorCallback? : Function) : Promise <any> => {
@@ -57,25 +56,25 @@ export class ApiService {
 	}
 	
 	get = (path : string) : Observable <any> => {
-		return this.httpClient.get (this.baseUrl + path, {
+		return this.httpClient.get (environment.apiBaseUrl + path, {
 			withCredentials: true
 		});
 	}
 	
 	post = (path : string, body : any) : Observable <any> => {
-		return this.httpClient.post (this.baseUrl + path, body, {
+		return this.httpClient.post (environment.apiBaseUrl + path, body, {
 			withCredentials: true
 		});
 	}
 	
 	put = (path : string, body : any) : Observable <any> => {
-		return this.httpClient.put (this.baseUrl + path, body, {
+		return this.httpClient.put (environment.apiBaseUrl + path, body, {
 			withCredentials: true
 		});
 	}
 	
 	delete = (path : string) : Observable <any> => {
-		return this.httpClient.delete (this.baseUrl + path, {
+		return this.httpClient.delete (environment.apiBaseUrl + path, {
 			withCredentials: true
 		});
 	}
