@@ -13,7 +13,6 @@ export class HeaderComponent implements OnInit {
 	constructor (public dataService : DataService, private apiService : ApiService, private router : Router) {}
 	
 	navigateToMain = async () : Promise <any> => {
-		//todo slow
 		
 		await this.router.navigateByUrl ("/login", { skipLocationChange: true });
 		

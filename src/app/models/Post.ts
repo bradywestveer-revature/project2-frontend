@@ -6,7 +6,6 @@ export interface Post {
 	body : string;
 	imageUrls : string [];
 	
-	//todo use more descriptive type than just any
 	likes : any;
 	
 	comments : Comment [];

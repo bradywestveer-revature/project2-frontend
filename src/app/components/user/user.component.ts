@@ -14,7 +14,6 @@ export class UserComponent implements OnInit {
 	constructor (private router : Router) {}
 	
 	navigate = async () : Promise <any> => {
-		//todo slow
 		
 		await this.router.navigateByUrl ("/", { skipLocationChange: true });
 		

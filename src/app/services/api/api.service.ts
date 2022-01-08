@@ -29,7 +29,6 @@ export class ApiService {
 				}
 				
 				else {
-					//todo
 					if (body.message.includes ("Unauthorized")) {
 						localStorage.removeItem ("userId");
 					}

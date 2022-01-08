@@ -12,7 +12,6 @@ export class FileService {
 		return this.sanitizer.bypassSecurityTrustUrl (URL.createObjectURL (file));
 	};
 	
-	//todo await instead of callback?
 	getImageData = (file : File, callback : Function) : void => {
 		//convert image to base64 string
 		const fileReader = new FileReader ();

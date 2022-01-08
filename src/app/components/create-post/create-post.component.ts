@@ -48,8 +48,6 @@ export class CreatePostComponent implements OnInit {
 
 			this.previewImageUrls = [];
 			
-			//todo slow
-			
 			await this.router.navigateByUrl ("/login", { skipLocationChange: true });
 			
 			this.router.navigate (["/"]);

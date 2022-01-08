@@ -27,24 +27,6 @@ export class RegisterComponent implements OnInit {
 
 	confirmPasswordInput : string = "";
 
-	// firstnameErr: boolean = false;
-
-	// lastnameErr: boolean = false;
-
-	// emailErr: boolean = false;
-
-	// usernameErr: boolean = false;
-
-	// passErr: boolean = false;
-	
-	// user : User = <User> {
-	// firstName: "",
-	// lastName: "",
-	// email: "",
-	// username: "",
-	// profileImageUrl: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-	// };
-
 	constructor (private apiServ: ApiService) {}
 
 	ngOnInit () {}
@@ -57,16 +39,6 @@ export class RegisterComponent implements OnInit {
 		
 		return success;
 	};
-	// "[\\w-]+@[\\w-]+\\.[a-zA-z]+"
-	// registerUserCallback (data: any) {
-	// 	console.log ("registerUserCallback()");
-	// 	console.log (data.message);
-	// 	this.errorTextClass = "errorText reg-green";
-	// 	this.errMessage = String (data.message);
-	// 	//console.log(this.errMessage);
-	// 	alert (data.message);
-	// 	//this.router.navigate(data.redirect);
-	// }
 	
 	keyDown = (event : KeyboardEvent) => {
 		if (event.key === "Enter") {
@@ -137,12 +109,7 @@ export class RegisterComponent implements OnInit {
 		}
 	  
 		// if we got this far its safe to register our user
-		// this.user.firstName = this.firstNameInput;
-		// this.user.lastName = this.lastNameInput;
-		// this.user.email = this.emailInput;
-		// this.user.username = this.usernameInput;
-		// this.user.password = this.passwordInput;
-		// this.apiServ.createUser (this.user, (data : any) : void => {
+
 		this.apiServ.createUser (<User> {
 			firstName: this.firstNameInput,
 			lastName: this.lastNameInput,
@@ -150,10 +117,5 @@ export class RegisterComponent implements OnInit {
 			username: this.usernameInput,
 			password: this.passwordInput
 		});
-		// }, (data : any) : void => {
-		// this.errorTextClass = "errorText reg-green";
-		// this.errMessage = String (data.message);
-		// alert (data.message);
-		// });
 	};
 }

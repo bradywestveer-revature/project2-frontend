@@ -72,14 +72,9 @@ export class ProfileComponent implements OnInit {
 		}, async (data : any) : Promise <any> => {
 			this.dataService.user = <User> data.data;
 			
-			//todo slow
-			
 			await this.router.navigateByUrl ("/", { skipLocationChange: true });
 			
 			this.router.navigate (["/@" + data.data.username]);
-			
-			//todo do this if we don't reload
-			// this.user = <User> data.data;
 		});
 		
 		this.cancelEditProfile ();
@@ -122,7 +117,6 @@ export class ProfileComponent implements OnInit {
 				
 				this.dataService.user = this.dataService.users [localStorage ["userId"]];
 				
-				//todo slow
 				for (let i = 0; i < Object.keys (this.dataService.users).length; i++) {
 					//if user's username matches username from URL
 					if (this.dataService.users [Object.keys (this.dataService.users) [i]].username === paramaters ["username"]) {

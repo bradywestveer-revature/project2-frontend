@@ -37,7 +37,6 @@ export class PostComponent implements OnInit {
 		this.currentImageIndex = Math.min (this.post.imageUrls.length - 1, this.currentImageIndex + 1);
 	}
 	
-	//todo do this inline in html somehow
 	getLikeCount = () : number => Object.keys (this.post.likes).length;
 	
 	toggleLike = () : void => {
@@ -46,14 +45,12 @@ export class PostComponent implements OnInit {
 		if (this.liked) {
 			this.apiService.createPostLike (this.post.id);
 			
-			//change this.likes on client-side, set id to -1 to not conflict with other like ids
 			this.post.likes [this.dataService.user.id] = -1;
 		}
 		
 		else {
 			this.apiService.deletePostLike (this.post.id);
 			
-			//change this.likes on client-side
 			delete this.post.likes [this.dataService.user.id];
 		}
 	};
@@ -79,7 +76,6 @@ export class PostComponent implements OnInit {
 	};
 	
 	ngOnInit () {
-		//todo wait until we get posts in Main/Profile?
 		
 		if (this.post.likes [this.dataService.user.id] !== undefined) {
 			this.liked = true;
