@@ -107,8 +107,6 @@ export class RegisterComponent implements OnInit {
 			// this.passErr = false;
 			this.errMessage = "";
 		}
-	  
-		// if we got this far its safe to register our user
 
 		this.apiServ.createUser (<User> {
 			firstName: this.firstNameInput,

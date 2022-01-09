@@ -13,15 +13,15 @@ import { DataService } from "src/app/services/data/data.service";
 })
 export class LoginComponent implements OnInit {
 	errorTextClass : string = "errorText login-white";
-
+	
 	errMessage : string = "Please Login";
-
+	
 	identifierInput : string = ""; // it can also be the email
-
+	
 	passwordInput : string = "";
 
 	user : User = <User> {};
-  
+	
 	constructor (private apiServ: ApiService, private dataServ: DataService) {}
 
 	ngOnInit () {}
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
 		this.errorTextClass = "errorText";
 
 		this.errorTextClass = "errorText login-white";
-
+		
 		this.errMessage = "Please Login";
 		
 		this.apiServ.createSession (this.identifierInput, this.passwordInput, (data : any) : void => {
@@ -45,5 +45,5 @@ export class LoginComponent implements OnInit {
 		}, (data : any) : void => {
 			this.errMessage = data.message;
 		});
-	}
+	};
 }
