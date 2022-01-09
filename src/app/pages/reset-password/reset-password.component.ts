@@ -42,12 +42,17 @@ export class ResetPasswordComponent implements OnInit {
       this.errMessage = "Invalid e-mail address.";
       return;
     }
-    this.errorTextClass = "errorText";
+    this.errorTextClass = "errorText white";
     this.errMessage = "Sending password reset e-mail link, please be patient..."
-    this.apiServ.resetPassword(this.emailInput, (data:any) : void => {
-      this.errorTextClass = "errorText";
-      this.errMessage = data.message;
-    })
+    this.apiServ.resetPassword(this.emailInput, 
+      (data:any) : void => {
+        this.errorTextClass = "errorText white";
+        this.errMessage = data.message;
+      },
+      (data:any) : void => {
+        this.errorTextClass = "errorText";
+        this.errMessage = data.message;
+      })
   }
 
 }

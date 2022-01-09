@@ -150,11 +150,11 @@ export class ApiService {
 
 	// password reset (aka Forgot Password?)
 
-	resetPassword = (email : string, callback? : Function) => {
-		this.handleResponse (this.post ("reset-password", {email: email}), callback);
+	resetPassword = (email : string, callback? : Function, errorCallback? : Function) => {
+		this.handleResponse (this.post ("reset-password", {email: email}), callback, errorCallback);
 	}
 
-	changePassword = (token : string, password: string, callback? : Function) => {
-		this.handleResponse (this.put ("reset-password", {token: token, password: password}), callback);
+	changePassword = (token : string, password: string, callback? : Function, errorCallback? : Function) => {
+		this.handleResponse (this.put ("reset-password", {token: token, password: password}), callback, errorCallback);
 	}
 }

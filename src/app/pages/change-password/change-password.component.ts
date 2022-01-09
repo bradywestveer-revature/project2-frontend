@@ -58,7 +58,11 @@ export class ChangePasswordComponent implements OnInit {
 			// this.passErr = false;
 			this.errMessage = "";
 		}    
-    this.apiServ.changePassword(this.token, this.passwordInput, (data:any) : void => {
+    this.apiServ.changePassword(this.token, this.passwordInput, 
+      (data:any) : void => {
+      this.errMessage = data.message;
+    },
+    (data:any) : void => {
       this.errMessage = data.message;
     });
   }
