@@ -3,7 +3,3 @@
 	align-items: flex-start;
 	gap: 10px;
 }
-
-.comment > p {
-	word-break: break-word;
-}
