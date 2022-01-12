@@ -32,29 +32,29 @@ export class CreatePostComponent implements OnInit {
 				this.images.push (imageData);
 			});
 		}
-	}
+	};
 	
 	removePreviewImage = (index : number) : void => {
 		this.previewImageUrls.splice (index, 1);
 		
 		this.images.splice (index, 1);
-	}
+	};
 	
 	post = () : void => {
 		this.apiService.createPost (this.postInput, this.images, async () : Promise <any> => {
-			this.postInput = "";
-			
-			this.images = [];
-
-			this.previewImageUrls = [];
-			
 			//todo slow
 			
 			await this.router.navigateByUrl ("/login", { skipLocationChange: true });
 			
 			this.router.navigate (["/"]);
 		});
-	}
+		
+		this.postInput = "";
+		
+		this.images = [];
+		
+		this.previewImageUrls = [];
+	};
 	
 	ngOnInit () {}
 }
