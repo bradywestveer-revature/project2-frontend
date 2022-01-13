@@ -44,9 +44,11 @@ export class CreatePostComponent implements OnInit {
 		this.apiService.createPost (this.postInput, this.images, async () : Promise <any> => {
 			//todo slow
 			
+			const currentUrl : string = this.router.url;
+			
 			await this.router.navigateByUrl ("/login", { skipLocationChange: true });
 			
-			this.router.navigate (["/"]);
+			this.router.navigate ([currentUrl]);
 		});
 		
 		this.postInput = "";
