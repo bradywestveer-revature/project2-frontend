@@ -25,6 +25,7 @@ p, pre, a, label {
 	padding: 0;
 	color: white;
 	font-family: Arial;
+	word-break: break-word;
 }
 
 a {
